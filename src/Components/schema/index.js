@@ -91,7 +91,7 @@ export const submitUserSchema = Yup.object({
   retailer: Yup.number().required("Please select retailer"),
 
   product: Yup.number().required("Please select product you sold"),
-  size: Yup.number().required("Please select product size"),
+
   invoice: Yup.string().min(2).required("Please enter delivered invoice"),
   invoice_date: Yup.string().required("Please select date"),
   quantity: Yup.number().required("Please select shipped quantity"),
@@ -99,11 +99,7 @@ export const submitUserSchema = Yup.object({
 
   // FIXME all fields depend on product field, if product field is empty then what?
   product2: Yup.number(),
-  size2: Yup.number().when("product2", {
-    is: (product2) => product2,
-    then: Yup.number().required("Please select product size"),
-    otherwise: Yup.number(),
-  }),
+
   invoice2: Yup.string()
     .min(2)
     .when("product2", {
@@ -131,11 +127,7 @@ export const submitUserSchema = Yup.object({
 
   // FIXME all fields depend on product field, if product field is empty then what?
   product3: Yup.number(),
-  size3: Yup.number().when("product3", {
-    is: (product3) => product3,
-    then: Yup.number().required("Please select product size"),
-    otherwise: Yup.number(),
-  }),
+
   invoice3: Yup.string()
     .min(2)
     .when("product3", {
@@ -161,9 +153,7 @@ export const submitUserSchema = Yup.object({
     otherwise: Yup.mixed(),
   }),
 
-  // split1: Yup.bool().oneOf([true], "You need to agree  the split1"),
-  // split2: Yup.bool().oneOf([true], "You need to agree  the split2"),
-  // split3: Yup.bool().oneOf([true], "You need to agree  the split3"),
+
 });
 
 const phoneRegExp = /^([0-9]{10})$/gm;

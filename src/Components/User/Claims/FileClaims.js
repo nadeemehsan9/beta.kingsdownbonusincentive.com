@@ -41,36 +41,12 @@ function FileClaims() {
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
 
-  const [prod, setProd] = useState("");
-  const [prod2, setProd2] = useState("");
-  const [prod3, setProd3] = useState("");
-
-  const [selSize, setSelSize] = useState("");
-  const [selSize2, setSelSize2] = useState("");
-  const [selSize3, setSelSize3] = useState("");
-
   const [price, setPrice] = useState("");
   const [price2, setPrice2] = useState("");
   const [price3, setPrice3] = useState("");
 
   const [product, setProduct] = useState([]);
   const [retailer, setRetailer] = useState([]);
-
-  const [size, setSize] = useState([]);
-  const [size2, setSize2] = useState([]);
-  const [size3, setSize3] = useState([]);
-
-  const [quantity, setQuantity] = useState(1);
-  const [quantity2, setQuantity2] = useState(1);
-  const [quantity3, setQuantity3] = useState(1);
-
-  const [claimPriceLoader, setClaimPriceLoader] = useState(false);
-  const [claimPriceLoader2, setClaimPriceLoader2] = useState(false);
-  const [claimPriceLoader3, setClaimPriceLoader3] = useState(false);
-
-  const [sizeLoader, setSizeLoader] = useState(false);
-  const [sizeLoader2, setSizeLoader2] = useState(false);
-  const [sizeLoader3, setSizeLoader3] = useState(false);
 
   const state = useSelector((state) => state.stateVals);
   const { id } = state;
@@ -114,296 +90,28 @@ function FileClaims() {
 
         setSelectedOption(response?.data?.response);
         setFieldValue("retailer", response?.data?.response?.value);
-        getProduct(response?.data?.response?.value);
       } catch (error) {
         setSelectedOption(null);
       }
     };
 
     getRetailerInfo();
-  }, []);
 
-  const getProduct = async (id) => {
-    setFieldValue("product", "");
-    setFieldValue("size", "");
-    setFieldValue("product2", "");
-    setFieldValue("size2", "");
-    setFieldValue("product3", "");
-    setFieldValue("size3", "");
+    const getProduct = async () => {
+      const { data } = await ProductService.getProduct(id);
 
-    setPrice("");
-    setSelSize("");
-    setProd("");
-    setSize([]);
-
-    setPrice2("");
-    setSelSize2("");
-    setProd2("");
-    setSize2([]);
-
-    setPrice3("");
-    setSelSize3("");
-    setProd3("");
-    setSize3([]);
-    const { data } = await ProductService.getProduct(id);
-
-    const { response: res } = data;
-    const results = [];
-    res.map((value) => {
-      results.push({
-        key: value.name,
-        value: value.id,
+      const { response: res } = data;
+      const results = [];
+      res.map((value) => {
+        results.push({
+          key: value.sku + " / " + value.description,
+          value: value.id,
+        });
       });
-    });
-    setProduct([...results]);
-  };
-
-  const changeQuantity = (e) => {
-    if (e == "") {
-      e = "1";
-    }
-
-    setQuantity(e);
-    const getPrice = async () => {
-      setPrice("");
-      try {
-        setClaimPriceLoader(true);
-        const { data } = await UserService.getProdPrice(id, prod, selSize);
-        const { response } = data;
-        setPrice(response * e);
-
-        setClaimPriceLoader(false);
-      } catch (error) {
-        setClaimPriceLoader(false);
-        setPrice(0);
-      }
+      setProduct([...results]);
     };
-
-    if (e != "" && e > 1) {
-      getPrice();
-    }
-  };
-
-  const changeQuantity2 = (e) => {
-    if (e == "") {
-      e = "1";
-    }
-    setQuantity2(e);
-    const getPrice = async () => {
-      setPrice2("");
-      try {
-        setClaimPriceLoader2(true);
-        const { data } = await UserService.getProdPrice(id, prod2, selSize2);
-        const { response } = data;
-        setPrice2(response * e);
-
-        setClaimPriceLoader2(false);
-      } catch (error) {
-        setClaimPriceLoader2(false);
-        setPrice2(0);
-      }
-    };
-
-    if (e != "" && e > 1) {
-      getPrice();
-    }
-  };
-
-  const changeQuantity3 = (e) => {
-    if (e == "") {
-      e = "1";
-    }
-    setQuantity3(e);
-    const getPrice = async () => {
-      setPrice3("");
-      try {
-        setClaimPriceLoader3(true);
-        const { data } = await UserService.getProdPrice(id, prod3, selSize3);
-        const { response } = data;
-        setPrice3(response * e);
-
-        setClaimPriceLoader3(false);
-      } catch (error) {
-        setClaimPriceLoader3(false);
-        setPrice3(0);
-      }
-    };
-
-    if (e != "" && e > 1) {
-      getPrice();
-    }
-  };
-
-  const fetchPrice = (e) => {
-    setSelSize(e);
-    setPrice("");
-    const getPrice = async () => {
-      try {
-        setClaimPriceLoader(true);
-        const { data } = await UserService.getProdPrice(id, prod, e);
-        const { response } = data;
-        setPrice(response * quantity);
-
-        setClaimPriceLoader(false);
-      } catch (error) {
-        setClaimPriceLoader(false);
-        setPrice(0);
-      }
-    };
-
-    if (e != "") {
-      getPrice();
-    }
-  };
-
-  const fetchPrice2 = (e) => {
-    setSelSize2(e);
-    setPrice2("");
-    const getPrice = async () => {
-      try {
-        setClaimPriceLoader2(true);
-        const { data } = await UserService.getProdPrice(id, prod2, e);
-        const { response } = data;
-        setPrice2(response * quantity2);
-
-        setClaimPriceLoader2(false);
-      } catch (error) {
-        setClaimPriceLoader2(false);
-        setPrice2(0);
-      }
-    };
-
-    if (e != "") {
-      getPrice();
-    }
-  };
-
-  const fetchPrice3 = (e) => {
-    console.log("price 3");
-    setSelSize3(e);
-    setPrice3("");
-
-    const getPrice = async () => {
-      try {
-        setClaimPriceLoader3(true);
-        const { data } = await UserService.getProdPrice(id, prod3, e);
-        const { response } = data;
-
-        setPrice3(response * quantity3);
-
-        setClaimPriceLoader3(false);
-      } catch (error) {
-        setClaimPriceLoader3(false);
-        setPrice3(0);
-      }
-    };
-
-    if (e != "") {
-      getPrice();
-    }
-  };
-
-  const changeSize = (e) => {
-    setPrice("");
-    setProd(e);
-    setSize([]);
-
-    const getSize = async () => {
-      setSizeLoader(true);
-      try {
-        const { data } = await ProductService.getSizeByUserProduct(
-          values.retailer,
-          e
-        );
-        const { response: res } = data;
-        const results = [];
-        res.map((value) => {
-          results.push({
-            key: value.size,
-            code: value.code,
-            price: value.price,
-            value: value.id,
-          });
-        });
-        setSize([...results]);
-        setSizeLoader(false);
-      } catch (error) {
-        setSize([]);
-        setSizeLoader(false);
-      }
-    };
-
-    if (e !== "") {
-      setProd(e);
-      getSize();
-    }
-  };
-
-  const changeSize2 = (e) => {
-    setPrice2("");
-    setProd2(e);
-    setSize2([]);
-
-    const getSize = async () => {
-      setSizeLoader2(true);
-      try {
-        const { data } = await ProductService.getSizeByUserProduct(id, e);
-        const { response: res } = data;
-        const results = [];
-        res.map((value) => {
-          results.push({
-            key: value.size,
-            code: value.code,
-            price: value.price,
-            value: value.id,
-          });
-        });
-        setSize2([...results]);
-        setSizeLoader2(false);
-      } catch (error) {
-        setSize2([]);
-        setSizeLoader2(false);
-      }
-    };
-
-    if (e !== "") {
-      setProd2(e);
-      getSize();
-    }
-  };
-
-  const changeSize3 = (e) => {
-    setPrice3("");
-    setProd3(e);
-    setSize3([]);
-
-    const getSize = async () => {
-      setSizeLoader3(true);
-      try {
-        const { data } = await ProductService.getSizeByUserProduct(id, e);
-        const { response: res } = data;
-        const results = [];
-        res.map((value) => {
-          results.push({
-            key: value.size,
-            code: value.code,
-            price: value.price,
-            value: value.id,
-          });
-        });
-        setSize3([...results]);
-        setSizeLoader3(false);
-      } catch (error) {
-        setSize3([]);
-        setSizeLoader3(false);
-      }
-    };
-
-    if (e !== "") {
-      setProd3(e);
-      getSize();
-    }
-  };
+    getProduct();
+  }, []);
 
   // }, [userActions, accessToken, navigate]);
 
@@ -499,10 +207,6 @@ function FileClaims() {
       product2: "",
       product3: "",
 
-      size: "",
-      size2: "",
-      size3: "",
-
       invoice: "",
       invoice2: "",
       invoice3: "",
@@ -526,7 +230,7 @@ function FileClaims() {
       // FORM 1
 
       bodyFormData.append("product", values.product);
-      bodyFormData.append("size", values.size);
+
       bodyFormData.append("invoice", values.invoice);
       bodyFormData.append("invoice_date", values.invoice_date);
       bodyFormData.append("quantity", values.quantity);
@@ -536,7 +240,7 @@ function FileClaims() {
         // FORM 2
 
         bodyFormData.append("product2", values.product2);
-        bodyFormData.append("size2", values.size2);
+
         bodyFormData.append("invoice2", values.invoice2);
         bodyFormData.append("invoice_date2", values.invoice_date2);
         bodyFormData.append("quantity2", values.quantity2);
@@ -547,7 +251,7 @@ function FileClaims() {
         // FORM 3
 
         bodyFormData.append("product3", values.product3);
-        bodyFormData.append("size3", values.size3);
+
         bodyFormData.append("invoice3", values.invoice3);
         bodyFormData.append("invoice_date3", values.invoice_date3);
         bodyFormData.append("quantity3", values.quantity3);
@@ -663,7 +367,6 @@ function FileClaims() {
                                           "retailer",
                                           selectedOption.value
                                         );
-                                        getProduct(selectedOption.value);
                                       } else {
                                         setFieldValue("retailer", "");
                                       }
@@ -721,31 +424,12 @@ function FileClaims() {
                             ) : (
                               ""
                             )}
-
-                            {claimPriceLoader && (
-                              <div className="col-6">
-                                <div className="claimPrice">
-                                  <span
-                                    className="spinner-border spinner-border-smSplit1"
-                                    role="status"
-                                    aria-hidden="true"
-                                  ></span>
-                                </div>
-                              </div>
-                            )}
                           </div>
 
                           <div className="form-filds">
                             <div className="row">
-                              <div className="col-lg-6">
+                              <div className="col-lg-12">
                                 <div className="select-leading">
-                                  {/* {userCityLoader ? (
-                                    <span
-                                      className="spinner-border spinner-border-sm"
-                                      role="status"
-                                      aria-hidden="true"
-                                    ></span>
-                                  ) : null} */}
                                   <div
                                     className={`form-floating ${
                                       errors.product && touched.product
@@ -756,7 +440,6 @@ function FileClaims() {
                                     <select
                                       className="form-select"
                                       onChange={(e) => {
-                                        changeSize(e.target.value);
                                         handleChange(e);
                                       }}
                                       onBlur={handleBlur}
@@ -764,7 +447,9 @@ function FileClaims() {
                                       value={values.product || ""}
                                       required
                                     >
-                                      <option value="">SELECT PRODUCT</option>
+                                      <option value="">
+                                        Levin SKU / Description{" "}
+                                      </option>
                                       {product.map((res) => {
                                         return (
                                           <option
@@ -782,59 +467,6 @@ function FileClaims() {
                                     {errors.product && touched.product ? (
                                       <p className="help is-danger">
                                         {errors.product}
-                                      </p>
-                                    ) : null}
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="col-lg-6">
-                                <div className="select-leading">
-                                  {sizeLoader ? (
-                                    <span
-                                      className="spinner-border spinner-border-sm"
-                                      role="status"
-                                      aria-hidden="true"
-                                    ></span>
-                                  ) : null}
-                                  <div
-                                    className={`form-floating ${
-                                      errors.size && touched.size
-                                        ? "is-danger"
-                                        : ""
-                                    }`}
-                                  >
-                                    <select
-                                      className="form-select"
-                                      onChange={(e) => {
-                                        handleChange(e);
-                                        fetchPrice(e.target.value);
-                                      }}
-                                      onBlur={handleBlur}
-                                      name="size"
-                                      value={values.size || ""}
-                                      required
-                                    >
-                                      <option value="">
-                                        SELECT UPC/Size/Spiff
-                                      </option>
-                                      {size.map((res) => {
-                                        return (
-                                          <option
-                                            key={res.value}
-                                            value={res.value}
-                                          >
-                                            {`${res.code}/${res.key}/ $${res.price}`}
-                                          </option>
-                                        );
-                                      })}
-                                    </select>
-                                    <label>
-                                      <span>*</span> UPC/Size/Spiff
-                                    </label>
-                                    {errors.size && touched.size ? (
-                                      <p className="help is-danger">
-                                        {errors.size}
                                       </p>
                                     ) : null}
                                   </div>
@@ -906,7 +538,6 @@ function FileClaims() {
                                       className="form-select"
                                       onChange={(e) => {
                                         handleChange(e);
-                                        changeQuantity(e.target.value);
                                       }}
                                       onBlur={handleBlur}
                                       name="quantity"
@@ -989,25 +620,13 @@ function FileClaims() {
                                 ) : (
                                   ""
                                 )}
-
-                                {claimPriceLoader2 && (
-                                  <div className="col-6">
-                                    <div className="claimPrice2">
-                                      <span
-                                        className="spinner-border spinner-border-sm"
-                                        role="status"
-                                        aria-hidden="true"
-                                      ></span>
-                                    </div>
-                                  </div>
-                                )}
                               </div>
                             </div>
                           </div>
 
                           <div className="form-filds">
                             <div className="row">
-                              <div className="col-lg-6">
+                              <div className="col-lg-12">
                                 <div className="select-leading">
                                   {/* {userCityLoader ? (
                                     <span
@@ -1026,7 +645,6 @@ function FileClaims() {
                                     <select
                                       className="form-select"
                                       onChange={(e) => {
-                                        changeSize2(e.target.value);
                                         handleChange(e);
                                       }}
                                       onBlur={handleBlur}
@@ -1034,7 +652,10 @@ function FileClaims() {
                                       value={values.product2 || ""}
                                       required
                                     >
-                                      <option value="">SELECT PRODUCT</option>
+                                      <option value="">
+                                        {" "}
+                                        Levin SKU / Description{" "}
+                                      </option>
                                       {product.map((res) => {
                                         return (
                                           <option
@@ -1047,65 +668,11 @@ function FileClaims() {
                                       })}
                                     </select>
                                     <label>
-                                      <span>*</span> SELECT PRODUCT
+                                      <span>*</span> PRODUCT SOLD
                                     </label>
                                     {errors.product2 && touched.product2 ? (
                                       <p className="help is-danger">
                                         {errors.product2}
-                                      </p>
-                                    ) : null}
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="col-lg-6">
-                                <div className="select-leading">
-                                  {sizeLoader2 ? (
-                                    <span
-                                      className="spinner-border spinner-border-sm"
-                                      role="status"
-                                      aria-hidden="true"
-                                    ></span>
-                                  ) : null}
-                                  <div
-                                    className={`form-floating ${
-                                      errors.size2 && touched.size2
-                                        ? "is-danger"
-                                        : ""
-                                    }`}
-                                  >
-                                    <select
-                                      className="form-select"
-                                      onChange={(e) => {
-                                        handleChange(e);
-                                        fetchPrice2(e.target.value);
-                                      }}
-                                      onBlur={handleBlur}
-                                      name="size2"
-                                      value={values.size2 || ""}
-                                      required
-                                    >
-                                      <option value="">
-                                        SELECT UPC/Size/Spiff
-                                      </option>
-
-                                      {size2.map((res) => {
-                                        return (
-                                          <option
-                                            key={res.value}
-                                            value={res.value}
-                                          >
-                                            {`${res.code}/${res.key}/ $${res.price}`}
-                                          </option>
-                                        );
-                                      })}
-                                    </select>
-                                    <label>
-                                      <span>*</span> UPC/Size/Spiff
-                                    </label>
-                                    {errors.size2 && touched.size2 ? (
-                                      <p className="help is-danger">
-                                        {errors.size2}
                                       </p>
                                     ) : null}
                                   </div>
@@ -1178,7 +745,6 @@ function FileClaims() {
                                       className="form-select"
                                       onChange={(e) => {
                                         handleChange(e);
-                                        changeQuantity2(e.target.value);
                                       }}
                                       onBlur={handleBlur}
                                       name="quantity2"
@@ -1261,25 +827,13 @@ function FileClaims() {
                                 ) : (
                                   ""
                                 )}
-
-                                {claimPriceLoader3 && (
-                                  <div className="col-6">
-                                    <div className="claimPrice3">
-                                      <span
-                                        className="spinner-border spinner-border-sm"
-                                        role="status"
-                                        aria-hidden="true"
-                                      ></span>
-                                    </div>
-                                  </div>
-                                )}
                               </div>
                             </div>
                           </div>
 
                           <div className="form-filds">
                             <div className="row">
-                              <div className="col-lg-6">
+                              <div className="col-lg-12">
                                 <div className="select-leading">
                                   <div
                                     className={`form-floating ${
@@ -1291,7 +845,6 @@ function FileClaims() {
                                     <select
                                       className="form-select"
                                       onChange={(e) => {
-                                        changeSize3(e.target.value);
                                         handleChange(e);
                                       }}
                                       onBlur={handleBlur}
@@ -1299,7 +852,9 @@ function FileClaims() {
                                       value={values.product3 || ""}
                                       required
                                     >
-                                      <option value="">SELECT PRODUCT</option>
+                                      <option value="">
+                                        Levin SKU / Description{" "}
+                                      </option>
                                       {product.map((res) => {
                                         return (
                                           <option
@@ -1312,65 +867,11 @@ function FileClaims() {
                                       })}
                                     </select>
                                     <label>
-                                      <span>*</span> SELECT PRODUCT
+                                      <span>*</span> PRODUCT SOLD
                                     </label>
                                     {errors.product3 && touched.product3 ? (
                                       <p className="help is-danger">
                                         {errors.product3}
-                                      </p>
-                                    ) : null}
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="col-lg-6">
-                                <div className="select-leading">
-                                  {sizeLoader3 ? (
-                                    <span
-                                      className="spinner-border spinner-border-sm"
-                                      role="status"
-                                      aria-hidden="true"
-                                    ></span>
-                                  ) : null}
-                                  <div
-                                    className={`form-floating ${
-                                      errors.size3 && touched.size3
-                                        ? "is-danger"
-                                        : ""
-                                    }`}
-                                  >
-                                    <select
-                                      className="form-select"
-                                      onChange={(e) => {
-                                        handleChange(e);
-                                        fetchPrice3(e.target.value);
-                                      }}
-                                      onBlur={handleBlur}
-                                      name="size3"
-                                      value={values.size3 || ""}
-                                      required
-                                    >
-                                      <option value="">
-                                        SELECT UPC/Size/Spiff
-                                      </option>
-
-                                      {size3.map((res) => {
-                                        return (
-                                          <option
-                                            key={res.value}
-                                            value={res.value}
-                                          >
-                                            {`${res.code}/${res.key}/ $${res.price}`}
-                                          </option>
-                                        );
-                                      })}
-                                    </select>
-                                    <label>
-                                      <span>*</span> UPC/Size/Spiff
-                                    </label>
-                                    {errors.size3 && touched.size3 ? (
-                                      <p className="help is-danger">
-                                        {errors.size3}
                                       </p>
                                     ) : null}
                                   </div>
@@ -1444,7 +945,6 @@ function FileClaims() {
                                       className="form-select"
                                       onChange={(e) => {
                                         handleChange(e);
-                                        changeQuantity3(e.target.value);
                                       }}
                                       onBlur={handleBlur}
                                       name="quantity3"

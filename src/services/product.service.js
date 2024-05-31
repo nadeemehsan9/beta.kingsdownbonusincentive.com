@@ -20,11 +20,11 @@ const getProductForSize = () => {
   });
 };
 
-const getProduct = (id) => {
+const getProduct = () => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "product-by-retailer/" + id, {
+  return axios.get(API_URL + "product-kingsdown", {
     headers: headers,
   });
 };

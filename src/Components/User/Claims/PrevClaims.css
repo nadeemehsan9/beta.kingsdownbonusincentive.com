@@ -1,0 +1,58 @@
+div#ClaimsBox {
+  max-width: 960px;
+  background-color: #696158;
+  margin: 0 auto;
+  border-radius: 8px;
+  margin-top: -113px;
+  z-index: 1111;
+  position: relative;
+  padding: 40px 90px;
+  margin-bottom: 32px;
+}
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.page-item.active .page-link {
+  background-color: #696158;
+  border-color: #696158;
+  color: #fff !important;
+  z-index: 3;
+}
+a.page-link {
+  background-color: #70b0c1;
+  border: 1px solid #70b0c1;
+  color: #000;
+}
+
+.page-item.disabled .page-link {
+  color: #000;
+  pointer-events: none;
+  background-color: #70b0c1;
+  border-color: #70b0c1;
+  opacity: 0.6;
+}
+.page-item:first-child .page-link {
+  border-bottom-left-radius: 1000px;
+  border-top-left-radius: 1000px;
+}
+.page-item:last-child .page-link {
+  border-bottom-right-radius: 1000px;
+  border-top-right-radius: 1000px;
+}
+.page-link:hover {
+  z-index: 2;
+  color: #000;
+  background-color: #70b0c1;
+  border-color: #70b0c1;
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  ul.pagination {
+    white-space: nowrap;
+    padding-bottom: 10px;
+  }
+}

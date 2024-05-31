@@ -1,0 +1,421 @@
+.login-1 {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+  border-top: 19px solid #696158;
+  border-bottom: 19px solid #696158;
+  display: flex;
+  align-items: center;
+  font-family: "Sarabun", sans-serif;
+  background-color: white;
+}
+
+.login-1 .container {
+  max-width: 1593px;
+  width: 100%;
+}
+.login-1 .logo {
+  margin-top: 48px;
+  margin-bottom: 94px;
+  max-width: 320px;
+}
+.login-1 .side-ban {
+  margin-top: 136px;
+  margin-left: auto;
+  display: block;
+}
+.center-it {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-1 .black-box {
+  background-color: #181818;
+  padding: 40px 60px;
+}
+.login-1 .black-box .input-group {
+  margin-bottom: 18px;
+}
+.login-1 .black-box .input-group img,
+.login-2 .white-box .input-group img {
+  width: 18px;
+}
+.login-1 .black-box .input-group .input-group-text {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #ffffff;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.login-1 .black-box .form-control {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ffffff;
+  border-radius: 0;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 400;
+}
+.login-1 .black-box .form-control::-webkit-input-placeholder {
+  /* Edge */
+  color: #ffffff;
+  font-weight: 100;
+}
+.login-1 .black-box .form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ffffff;
+  font-weight: 100;
+}
+.login-1 .black-box .form-control::placeholder {
+  color: #ffffff;
+  font-weight: 100;
+}
+
+.login-1 .black-box .form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.login-1 .black-box input[type="submit"] {
+  width: 100%;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  height: 45px;
+  background: #696158;
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  margin-top: 17px;
+  margin-bottom: 20px;
+}
+
+.login-1 .black-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.login-1 .black-box ul li {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 15px;
+  min-height: 45px;
+  position: relative;
+  padding-right: 115px;
+}
+.login-1 .black-box ul li:last-child {
+  margin-bottom: 0;
+}
+.login-1 .black-box ul li a {
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #696158;
+  color: #fff;
+  font-size: 16px;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+}
+
+.login-1 .copyright {
+  color: #1d1d1d;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 140px;
+  margin-bottom: 55px;
+  max-width: 1593px;
+  position: absolute;
+  left: 00;
+  right: 0;
+  bottom: 50px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.login-1 .black-box input[type="submit"],
+a {
+  transition: all 0.4s;
+  text-decoration: none;
+}
+
+.login-1 .black-box input[type="submit"]:hover,
+.login-1 .black-box ul li a:hover {
+  background: #70b0c1;
+  transition: all 0.4s;
+  color: #000;
+}
+
+.modal-dialog.wd {
+  max-width: 700px;
+}
+
+.modal-content.video-app {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.modal-content.video-app .modal-body {
+  padding: 0px;
+  position: relative;
+  outline: none !important;
+  text-align: center;
+  color: #fff;
+}
+.modal-content.video-app .modal-body video {
+  height: 400px;
+}
+.modal-content.video-app .modal-body button.close.new {
+  position: absolute;
+  top: -10px;
+  font-size: 22px;
+  outline: none;
+  right: -14px;
+  z-index: 9999;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  border-radius: 60px !important;
+  text-shadow: none;
+  opacity: 1;
+  background: #c10000;
+  border: 0;
+  outline: none;
+  line-height: 11px;
+}
+.modal-content.video-app .modal-body button.close.new img {
+  width: 13px;
+}
+.login-1 .black-box .input-group.is-danger .input-group-text {
+  border-bottom-color: red;
+}
+.login-1 .black-box .input-group.is-danger .input-group-text img {
+  filter: invert(48%) sepia(86%) saturate(7443%) hue-rotate(350deg)
+    brightness(90%) contrast(134%);
+}
+.login-1 .black-box .input-group.is-danger .form-control {
+  color: red;
+  border-bottom-color: red;
+}
+.login-1 .black-box .input-group.is-danger p.help.is-danger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  color: red;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.login-1
+  .black-box
+  .input-group.is-danger
+  .form-control::-webkit-input-placeholder {
+  /* Edge */
+  color: red;
+}
+.login-1 .black-box .input-group.is-danger .form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: red;
+}
+.login-1 .black-box .input-group.is-danger .form-control::placeholder {
+  color: red;
+}
+
+/* hight responsiveness  */
+@media (min-height: 800px) and (max-height: 975px) and (min-width: 1200px) {
+  .login-1 .col-md-6.col-lg-8 {
+    display: flex;
+    align-items: center;
+  }
+  .login-1 .logo {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    max-width: 300px;
+  }
+  .login-1 .black-box input[type="submit"] {
+    font-size: 15px;
+    height: 40px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+  }
+
+  .login-1 .side-ban {
+    margin-top: 32px;
+    margin-left: auto;
+    display: block;
+    width: 87%;
+  }
+  .login-1 {
+    padding-bottom: 40px;
+  }
+  .login-1 .copyright {
+    bottom: 20px;
+  }
+}
+@media (min-height: 600px) and (max-height: 799px) and (min-width: 1200px) {
+  .login-1 .col-md-6.col-lg-8 {
+    display: flex;
+    align-items: center;
+  }
+  .login-1 .black-box ul li a {
+    height: 35px;
+    padding: 0px 15px;
+    font-size: 14px;
+  }
+  .login-1 .logo {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    max-width: 250px;
+  }
+
+  .login-1 .black-box {
+    background-color: #181818;
+    padding: 30px 55px;
+  }
+  .login-1 .black-box input[type="submit"] {
+    font-size: 15px;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  .login-1 .black-box .input-group {
+    margin-bottom: 10px;
+  }
+  .login-1 {
+    border-top: 10px solid #696158;
+    border-bottom: 10px solid #696158;
+  }
+
+  .login-1 .side-ban {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 70%;
+  }
+  .login-1 {
+    padding-bottom: 35px;
+  }
+  .login-1 .copyright {
+    bottom: 12px;
+    font-size: 14px;
+  }
+}
+
+/* responsiveness  */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .login-1 .logo {
+    max-width: 315px;
+  }
+  .login-1 .black-box {
+    padding: 30px 20px;
+  }
+
+  .login-1 .copyright {
+    font-size: 14px;
+  }
+
+  .login-1 .black-box input[type="submit"],
+  .login-1 .black-box ul li a {
+    font-size: 14px;
+    height: 35px;
+  }
+
+  .login-1 .black-box ul li {
+    padding-right: 105px;
+    min-height: 35px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .login-1 .logo {
+    margin-top: 18px;
+    margin-bottom: 24px;
+    max-width: 90%;
+  }
+
+  .login-1 .black-box {
+    padding: 30px 20px;
+  }
+
+  .login-1 .copyright {
+    font-size: 14px;
+  }
+
+  .login-1 .black-box input[type="submit"],
+  .login-1 .black-box ul li a {
+    font-size: 14px;
+    height: 35px;
+  }
+
+  .login-1 .black-box ul li {
+    padding-right: 105px;
+    min-height: 35px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .login-1 .logo {
+    margin-top: 18px;
+    margin-bottom: 24px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .login-1 .center-it {
+    display: block;
+  }
+  .login-1 .black-box {
+    padding: 30px 20px;
+  }
+
+  .login-1 .copyright {
+    font-size: 14px;
+    bottom: 15px;
+  }
+  .modal-content.video-app .modal-body button.close.new {
+    right: 0;
+    border-radius: 0 !important;
+    top: 0px;
+  }
+
+  .login-1 .black-box input[type="submit"],
+  .login-1 .black-box ul li a {
+    font-size: 14px;
+    height: 35px;
+  }
+
+  .login-1 .black-box ul li {
+    padding-right: 105px;
+    min-height: 35px;
+    font-size: 12px;
+  }
+
+  .modal-content.video-app .modal-body video {
+    height: 200px;
+  }
+
+  .login-1 .side-ban {
+    margin-top: 35px;
+    margin-left: auto;
+    display: block;
+  }
+}

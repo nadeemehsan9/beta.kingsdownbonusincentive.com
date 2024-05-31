@@ -1,0 +1,251 @@
+.content-area {
+  margin-top: 41px;
+  margin-bottom: 60px;
+}
+
+p.marg-btm {
+  margin-bottom: 20px !important;
+}
+
+.content-area h2 {
+  font-size: 30px;
+  font-weight: lighter;
+  margin-bottom: 30px;
+  color: #70b0c1;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.store-area {
+  /* border: 1px solid #ccc; */
+  margin-left: 39px;
+  margin-right: 47px;
+  padding: 15px 0px;
+  margin-bottom: 15px;
+}
+
+.store-area H2 {
+  margin-left: 27px;
+  color: #70b0c1;
+  font-weight: 400;
+}
+
+.content-area h2 {
+  font-size: 30px;
+  font-weight: lighter;
+  margin-bottom: 30px;
+  color: #70b0c1;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.input-fields select {
+  width: 100%;
+  height: 50px;
+  padding-left: 24px;
+  color: #4e4e4e !important;
+  outline: none;
+  font-weight: bold;
+  background: #ececec;
+  border: none;
+  border-radius: 0px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.input-fields input[type="text"],
+.input-fields input[type="tel"],
+.input-fields input[type="email"],
+.input-fields input[type="password"] {
+  width: 100%;
+  height: 50px;
+  padding-left: 24px;
+  color: #4e4e4e !important;
+  outline: none;
+  font-weight: bold;
+  background: #ececec;
+  border: none;
+  border-radius: 0px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+input,
+submit,
+button {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-12 {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-offset-8 {
+    margin-left: 66.66666667%;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+.prfil-set {
+  /* border: 1px solid #ccc; */
+  margin-left: 15px;
+  margin-right: 15px;
+  padding: 15px 0px;
+  margin-bottom: 15px;
+  overflow: auto;
+}
+
+input[type="submit"]:hover {
+  background: #696158;
+  color: #fff;
+}
+
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  outline: none;
+  font-weight: bold;
+  background: #70b0c1;
+  border: 1px solid #70b0c1;
+  color: #000;
+  border: none;
+  border-radius: 0px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  transition: ease-in-out 0.7s;
+  margin-left: -6px;
+}
+
+.form-floating {
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+div#CotactBox {
+  max-width: 960px;
+  background-color: #70b0c1;
+  box-shadow: 0 0 14px 0 #000000;
+  margin: 0 auto;
+  border-radius: 8px;
+  margin-top: -190px;
+  z-index: 1111;
+  position: relative;
+  padding: 40px 90px;
+  margin-bottom: 32px;
+}
+
+.ContactWhitebg-box {
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  /* border-radius: 8px; */
+  margin-top: -240px !important;
+  z-index: 1111 !important;
+  position: relative !important;
+  padding: 1px 42px !important;
+}
+
+h4.prf-hed {
+  color: #70b0c1;
+}
+
+ul#contactDesign.single-li {
+  list-style-type: none;
+  padding-left: 12px;
+  position: relative;
+}
+
+.single-li {
+  margin-bottom: 0;
+}
+
+/* ul#contactDesign:before {
+    background: #d4d9df;
+    content: " ";
+    display: inline-block;
+    height: 100% !important;
+    left: 12px !important;
+    position: absolute;
+    width: 2px;
+    z-index: 400;
+    top: 13px;
+} */
+/* .single-li.timeline>li {
+    padding-bottom: 30px;
+} */
+/* ul#contactDesign>li:before {
+    background: #696158;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    content: " ";
+    display: inline-block;
+    height: 20px;
+    left: 3px !important;
+    position: absolute;
+    width: 20px;
+    z-index: 400;
+} */
+ul.timelinee {
+  list-style-type: none;
+  padding-left: 12px;
+  position: relative;
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .store-area {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: -50px !important;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+  .store-area {
+    margin-left: -3px !important;
+    margin-right: 10px !important;
+    margin-bottom: -50px !important;
+  }
+}
+@media (min-width: 426px) and (max-width: 768px) {
+  .store-area {
+    margin-bottom: -50px !important;
+  }
+}
+
+.store-area {
+  margin-bottom: 0px;
+}
+
+.form-floating.is-danger {
+  border-color: 1px soild red;
+  color: red;
+}
+
+.form-floating.is-danger input.form-control,
+.form-floating.is-danger .form-select {
+  border: 1px solid red;
+  color: red;
+}
+
+.form-filds .form-floating.is-danger > label > span {
+  color: red !important;
+}

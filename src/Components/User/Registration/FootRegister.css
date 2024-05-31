@@ -1,0 +1,21 @@
+footer {
+  background-color: #70b0c1;
+  bottom: 0;
+  float: left;
+  left: 0;
+  padding: 13px 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+footer,
+footer a {
+  color: #000 !important;
+  font-family: Open Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+}
+.text-center {
+  text-align: center !important;
+}

@@ -1,0 +1,49 @@
+div#TermBox {
+  max-width: 960px !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 14px 0 #929292 !important;
+  margin: 0 auto !important;
+  /* border-radius: 8px; */
+  /* margin-top: -262px !important; */
+  margin-top: -52px !important;
+  z-index: 1111 !important;
+  position: relative !important;
+  padding: 30px;
+}
+.pad-bot {
+  padding-bottom: 90px;
+  position: relative;
+  min-height: 100vh;
+}
+
+h4:first-child {
+  border-top: 0 solid #ddd;
+  padding-top: 0;
+}
+h4 {
+  border-top: 1px solid #ddd;
+  color: #000;
+  font-family: Sarabun, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 20px;
+  margin-bottom: 5px;
+  padding-top: 13px;
+}
+
+p {
+  color: #000;
+  font-family: Sarabun, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+}
+a {
+  color: #696158;
+  text-decoration: none;
+}
+@media (min-width: 320px) and (max-width: 767px) {
+  section.claims-part {
+    padding-bottom: 37px;
+  }
+}

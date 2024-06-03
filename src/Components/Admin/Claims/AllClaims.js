@@ -111,7 +111,7 @@ export default function AllClaims() {
     singleSelections = selectedRecords;
     $(".export-selection").attr(
       "href",
-      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-clm/${selectedRecords}?time=${time}`
+      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-kings/${selectedRecords}?time=${time}`
     );
     // FIXME length void click issue
   };
@@ -128,7 +128,7 @@ export default function AllClaims() {
 
     $(".export-selection").attr(
       "href",
-      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-clm/${allSelections}?time=${time}`
+      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-kings/${allSelections}?time=${time}`
     );
   };
 
@@ -1338,11 +1338,8 @@ export default function AllClaims() {
                   <td>
                     <ul className="rob-rollmann">
                       <li>
-                        <b>Name:</b> {el.prodName}
-                      </li>
-                      <li>
-                        <b>UPC/Size/Spiff:</b>{" "}
-                        {`${el.code}/${el.size}/$${el.price}`}
+                        <b>Levin SKU/Description/Bonus::</b>{" "}
+                        {`${el.code}/${el.prodName}/$${el.price}`}
                       </li>
                     </ul>
                   </td>
@@ -1486,7 +1483,7 @@ export default function AllClaims() {
                           <a
                             className="btn btn-primary back-orange export-rang w-100"
                             style={styles.range}
-                            href={`${API_URL}export-range-claims-clm/normal/pending/${startDate}/${endDate}`}
+                            href={`${API_URL}export-range-claims-kings/normal/pending/${startDate}/${endDate}`}
                           >
                             Export by range
                           </a>
@@ -1536,7 +1533,7 @@ export default function AllClaims() {
                           <a
                             className="btn btn-primary back-orange export-rang w-100"
                             style={styles.invRange}
-                            href={`${API_URL}export-range-invoice-claims-clm/normal/pending/${startInvDate}/${endInvDate}`}
+                            href={`${API_URL}export-range-invoice-claims-kings/normal/pending/${startInvDate}/${endInvDate}`}
                           >
                             Export by range
                           </a>
@@ -1568,10 +1565,9 @@ export default function AllClaims() {
                             <option value="5">Employee #</option>
                             <option value="6">Invoice #</option>
                             <option value="7">Retailer</option>
-                            <option value="12">Product Name</option>
-                            <option value="13">Product Code</option>
-                            <option value="14">Product Size</option>
-                            <option value="17">Product Price</option>
+                            <option value="13">Levin SKU</option>
+                            <option value="12">Description</option>
+                            <option value="17">Bonus</option>
                             <option value="15">Role</option>
                             <option value="16">Quantity</option>
                           </select>
@@ -1662,7 +1658,7 @@ export default function AllClaims() {
                           <ul className="dropdown-menu">
                             <li>
                               <a
-                                href={`${process.env.REACT_APP_API_Link}export-all-claims-clm/pending?time=${time}`}
+                                href={`${process.env.REACT_APP_API_Link}export-all-claims-kings/pending?time=${time}`}
                                 className="dropdown-item"
                                 style={{ cursor: "pointer" }}
                               >

@@ -102,7 +102,7 @@ export default function RejectedClaims() {
     singleSelections = selectedRecords;
     $(".export-selection").attr(
       "href",
-      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-clm/${selectedRecords}?time=${time}`
+      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-kings/${selectedRecords}?time=${time}`
     );
     // FIXME length void click issue
     console.log(singleSelections.length);
@@ -120,7 +120,7 @@ export default function RejectedClaims() {
     console.log(allSelections);
     $(".export-selection").attr(
       "href",
-      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-clm/${allSelections}?time=${time}`
+      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-kings/${allSelections}?time=${time}`
     );
   };
 
@@ -1075,11 +1075,8 @@ export default function RejectedClaims() {
                   <td>
                     <ul className="rob-rollmann">
                       <li>
-                        <b>Name:</b> {el.prodName}
-                      </li>
-                      <li>
-                        <b>UPC/Size/Spiff:</b>{" "}
-                        {`${el.code}/${el.size}/$${el.price}`}
+                        <b>Levin Sku/Description/Bonus:</b>{" "}
+                        {`${el.sku}/${el.description}/$${el.bonus}`}
                       </li>
                     </ul>
                   </td>
@@ -1088,7 +1085,7 @@ export default function RejectedClaims() {
                   <td>{el.ship_quantity}</td>
 
                   {/* <td>$ {el.ship_quantity * el.price}</td> */}
-                  <td>${el.price * el.ship_quantity}</td>
+                  <td>${el.bonus * el.ship_quantity}</td>
 
                   <td>
                     {" "}
@@ -1242,7 +1239,7 @@ export default function RejectedClaims() {
                           <a
                             className="btn btn-primary back-orange export-rang w-100"
                             style={styles.range}
-                            href={`${API_URL}export-range-claims-clm/normal/rejected/${startDate}/${endDate}`}
+                            href={`${API_URL}list-rejected-claims-kings/normal/rejected/${startDate}/${endDate}`}
                           >
                             Export by range
                           </a>
@@ -1292,7 +1289,7 @@ export default function RejectedClaims() {
                           <a
                             className="btn btn-primary back-orange export-rang w-100"
                             style={styles.invRange}
-                            href={`${API_URL}export-range-invoice-claims-clm/normal/rejected/${startInvDate}/${endInvDate}`}
+                            href={`${API_URL}export-range-invoice-claims-kings/normal/rejected/${startInvDate}/${endInvDate}`}
                           >
                             Export by range
                           </a>
@@ -1407,7 +1404,7 @@ export default function RejectedClaims() {
                           <ul className="dropdown-menu">
                             <li>
                               <a
-                                href={`${process.env.REACT_APP_API_Link}export-all-claims-clm/rejected?time=${time}`}
+                                href={`${process.env.REACT_APP_API_Link}export-all-claims-kings/rejected?time=${time}`}
                                 className="dropdown-item"
                                 style={{ cursor: "pointer" }}
                               >

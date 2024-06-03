@@ -355,7 +355,7 @@ const getAllLatestClaims = (limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-latest-claims" + "?limit=" + limit + "&page=1",
+    API_URL + "list-latest-claims-kings" + "?limit=" + limit + "&page=1",
     {
       headers: headers,
     }
@@ -459,7 +459,7 @@ const getAllAcceptedClaims = (limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-accepted-claims" + "?limit=" + limit + "&page=1",
+    API_URL + "list-accepted-claims-kings" + "?limit=" + limit + "&page=1",
     {
       headers: headers,
     }
@@ -471,7 +471,7 @@ const getAllRejectedClaims = (limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-rejected-claims" + "?limit=" + limit + "&page=1",
+    API_URL + "list-rejected-claims-kings" + "?limit=" + limit + "&page=1",
     {
       headers: headers,
     }
@@ -501,7 +501,12 @@ const getPaginatedLatestClaims = (pageNo, limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-latest-claims" + "?page=" + pageNo + "&limit=" + limit,
+    API_URL +
+      "list-latest-claims-kings" +
+      "?page=" +
+      pageNo +
+      "&limit=" +
+      limit,
     {
       headers: headers,
     }
@@ -513,7 +518,12 @@ const getPaginatedAcceptedClaims = (pageNo, limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-accepted-claims" + "?page=" + pageNo + "&limit=" + limit,
+    API_URL +
+      "list-accepted-claims-kings" +
+      "?page=" +
+      pageNo +
+      "&limit=" +
+      limit,
     {
       headers: headers,
     }
@@ -525,7 +535,12 @@ const getPaginatedRejectedClaims = (pageNo, limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-rejected-claims" + "?page=" + pageNo + "&limit=" + limit,
+    API_URL +
+      "list-rejected-claims-kings" +
+      "?page=" +
+      pageNo +
+      "&limit=" +
+      limit,
     {
       headers: headers,
     }
@@ -584,17 +599,15 @@ const getSearchAllClaims = (col, val, limit, pageNo) => {
   } else if (col === "7") {
     col = "retailer";
   } else if (col === "12") {
-    col = "product";
+    col = "description";
   } else if (col === "13") {
-    col = "upc";
-  } else if (col === "14") {
-    col = "size";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "spiff";
+    col = "bonus";
   } else if (col === "18") {
     col = "totalPrice";
   }
@@ -603,7 +616,7 @@ const getSearchAllClaims = (col, val, limit, pageNo) => {
   };
   return axios.get(
     API_URL +
-      "list-latest-claims" +
+      "list-latest-claims-kings" +
       "?" +
       col +
       "=" +
@@ -634,17 +647,15 @@ const getSearchAllArchivedClaims = (year, col, val, limit, pageNo) => {
   } else if (col === "7") {
     col = "retailer";
   } else if (col === "12") {
-    col = "product";
+    col = "description";
   } else if (col === "13") {
-    col = "upc";
-  } else if (col === "14") {
-    col = "size";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "spiff";
+    col = "bonus";
   } else if (col === "18") {
     col = "totalPrice";
   }
@@ -675,17 +686,15 @@ const getSearchAllAcceptedClaims = (col, val, limit, pageNo) => {
   } else if (col === "7") {
     col = "retailer";
   } else if (col === "12") {
-    col = "product";
+    col = "description";
   } else if (col === "13") {
-    col = "upc";
-  } else if (col === "14") {
-    col = "size";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "spiff";
+    col = "bonus";
   } else if (col === "18") {
     col = "totalPrice";
   }
@@ -694,7 +703,7 @@ const getSearchAllAcceptedClaims = (col, val, limit, pageNo) => {
   };
   return axios.get(
     API_URL +
-      "list-accepted-claims" +
+      "list-accepted-claims-kings" +
       "?" +
       col +
       "=" +
@@ -725,17 +734,15 @@ const getSearchAllRejectedClaims = (col, val, limit, pageNo) => {
   } else if (col === "7") {
     col = "retailer";
   } else if (col === "12") {
-    col = "product";
+    col = "description";
   } else if (col === "13") {
-    col = "upc";
-  } else if (col === "14") {
-    col = "size";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "spiff";
+    col = "bonus";
   } else if (col === "18") {
     col = "totalPrice";
   }
@@ -744,7 +751,7 @@ const getSearchAllRejectedClaims = (col, val, limit, pageNo) => {
   };
   return axios.get(
     API_URL +
-      "list-rejected-claims" +
+      "list-rejected-claims-kings" +
       "?" +
       col +
       "=" +
@@ -810,35 +817,32 @@ const getSearchWithoutDateAllClaims = (col, val, limit) => {
   } else if (col === "6") {
     col = "invoice";
   } else if (col === "7") {
-    col = "account";
-  } else if (col === "8") {
-    col = "store";
-  } else if (col === "9") {
-    col = "state";
-  } else if (col === "10") {
-    col = "city";
-  } else if (col === "11") {
-    col = "zip";
+    col = "retailer";
   } else if (col === "12") {
-    col = "prodName";
+    col = "description";
   } else if (col === "13") {
-    col = "prodCode";
-  } else if (col === "14") {
-    col = "splitStatus";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "price";
-  } else {
+    col = "bonus";
+  } else if (col === "18") {
     col = "totalPrice";
   }
   const headers = {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-latest-claims" + "?" + col + "=" + val + "&limit=" + limit,
+    API_URL +
+      "list-latest-claims-kings" +
+      "?" +
+      col +
+      "=" +
+      val +
+      "&limit=" +
+      limit,
     {
       headers: headers,
     }
@@ -858,31 +862,19 @@ const getSearchWithoutDateAllArchivedClaims = (year, col, val, limit) => {
   } else if (col === "6") {
     col = "invoice";
   } else if (col === "7") {
-    col = "invoice_date";
-  } else if (col === "8") {
-    col = "created_at";
-  } else if (col === "9") {
-    col = "account";
-  } else if (col === "10") {
-    col = "store";
-  } else if (col === "11") {
-    col = "state";
+    col = "retailer";
   } else if (col === "12") {
-    col = "city";
+    col = "description";
   } else if (col === "13") {
-    col = "zip";
-  } else if (col === "14") {
-    col = "product";
+    col = "sku";
   } else if (col === "15") {
-    col = "size";
-  } else if (col === "16") {
-    col = "status";
-  } else if (col === "17") {
     col = "role";
-  } else if (col === "18") {
+  } else if (col === "16") {
     col = "quantity";
-  } else if (col === "19") {
-    col = "price";
+  } else if (col === "17") {
+    col = "bonus";
+  } else if (col === "18") {
+    col = "totalPrice";
   }
   const headers = {
     "Content-Type": "application/json",
@@ -917,27 +909,17 @@ const getSearchWithoutDateAcceptedClaims = (col, val, limit) => {
   } else if (col === "6") {
     col = "invoice";
   } else if (col === "7") {
-    col = "account";
-  } else if (col === "8") {
-    col = "store";
-  } else if (col === "9") {
-    col = "state";
-  } else if (col === "10") {
-    col = "city";
-  } else if (col === "11") {
-    col = "zip";
+    col = "retailer";
   } else if (col === "12") {
-    col = "product";
+    col = "description";
   } else if (col === "13") {
-    col = "prodCode";
-  } else if (col === "14") {
-    col = "splitStatus";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "price";
+    col = "bonus";
   } else {
     col = "totalPrice";
   }
@@ -946,7 +928,7 @@ const getSearchWithoutDateAcceptedClaims = (col, val, limit) => {
   };
   return axios.get(
     API_URL +
-      "list-accepted-claims" +
+      "list-accepted-claims-kings" +
       "?" +
       col +
       "=" +
@@ -972,27 +954,17 @@ const getSearchWithoutDateRejectedClaims = (col, val, limit) => {
   } else if (col === "6") {
     col = "invoice";
   } else if (col === "7") {
-    col = "account";
-  } else if (col === "8") {
-    col = "store";
-  } else if (col === "9") {
-    col = "state";
-  } else if (col === "10") {
-    col = "city";
-  } else if (col === "11") {
-    col = "zip";
+    col = "retailer";
   } else if (col === "12") {
-    col = "product";
+    col = "description";
   } else if (col === "13") {
-    col = "prodCode";
-  } else if (col === "14") {
-    col = "splitStatus";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "price";
+    col = "bonus";
   } else {
     col = "totalPrice";
   }
@@ -1001,7 +973,7 @@ const getSearchWithoutDateRejectedClaims = (col, val, limit) => {
   };
   return axios.get(
     API_URL +
-      "list-rejected-claims" +
+      "list-rejected-claims-kings" +
       "?" +
       col +
       "=" +
@@ -1026,9 +998,9 @@ const getPaginatedAllClaims = (
   };
   let query = ``;
   if (startDate && endDate) {
-    query = `${API_URL}list-latest-claims?startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-latest-claims-kings?startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
   } else if (invoiceStart && invoiceEnd) {
-    query = `${API_URL}list-latest-claims?invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-latest-claims-kings?invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&page=${pageNo}&limit=${limit}`;
   }
   return axios.get(query, {
     headers: headers,
@@ -1067,7 +1039,7 @@ const getPaginatedAcceptedDateClaims = (startDate, endDate, pageNo, limit) => {
   };
   return axios.get(
     API_URL +
-      "list-accepted-claims" +
+      "list-accepted-claims-kings" +
       "?startDate=" +
       startDate +
       "&endDate=" +
@@ -1093,7 +1065,7 @@ const getPaginatedInvAcceptedDateClaims = (
   };
   return axios.get(
     API_URL +
-      "list-accepted-claims" +
+      "list-accepted-claims-kings" +
       "?invoiceStart=" +
       startDate +
       "&invoiceEnd=" +
@@ -1114,7 +1086,7 @@ const getPaginatedRejectedDateClaims = (startDate, endDate, pageNo, limit) => {
   };
   return axios.get(
     API_URL +
-      "list-rejected-claims" +
+      "list-rejected-claims-kings" +
       "?startDate=" +
       startDate +
       "&endDate=" +
@@ -1140,7 +1112,7 @@ const getPaginatedRejectedInvDateClaims = (
   };
   return axios.get(
     API_URL +
-      "list-rejected-claims" +
+      "list-rejected-claims-kings" +
       "?invoiceStart=" +
       startDate +
       "&invoiceEnd=" +
@@ -1179,27 +1151,17 @@ const getSearchWithDateAllClaims = (
   } else if (col === "6") {
     col = "invoice";
   } else if (col === "7") {
-    col = "account";
-  } else if (col === "8") {
-    col = "store";
-  } else if (col === "9") {
-    col = "state";
-  } else if (col === "10") {
-    col = "city";
-  } else if (col === "11") {
-    col = "zip";
+    col = "retailer";
   } else if (col === "12") {
-    col = "prodName";
+    col = "description";
   } else if (col === "13") {
-    col = "prodCode";
-  } else if (col === "14") {
-    col = "splitStatus";
+    col = "sku";
   } else if (col === "15") {
     col = "role";
   } else if (col === "16") {
     col = "quantity";
   } else if (col === "17") {
-    col = "price";
+    col = "bonus";
   } else if (col === "18") {
     col = "totalPrice";
   } else {
@@ -1213,13 +1175,13 @@ const getSearchWithDateAllClaims = (
   console.log(col);
   let query = ``;
   if (col && val && startDate && endDate) {
-    query = `${API_URL}list-latest-claims?col=${col}&val=${val}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}list-latest-claims-kings?col=${col}&val=${val}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
   } else if (col && val && invoiceStart && invoiceEnd) {
-    query = `${API_URL}list-latest-claims?col=${col}&val=${val}&invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}list-latest-claims-kings?col=${col}&val=${val}&invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&limit=${limit}&page=${pageNo}`;
   } else if (startDate && endDate) {
-    query = `${API_URL}list-latest-claims?startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}list-latest-claims-kings?startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
   } else if (invoiceStart && invoiceEnd) {
-    query = `${API_URL}list-latest-claims?invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}list-latest-claims-kings?invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&limit=${limit}&page=${pageNo}`;
   }
 
   return axios.get(query, {
@@ -1233,7 +1195,7 @@ const searchRejectedInvoiceDate = (startDate, endDate, limit) => {
   };
   return axios.get(
     API_URL +
-      "list-rejected-claims" +
+      "list-rejected-claims-kings" +
       "?invoiceStart=" +
       startDate +
       "&invoiceEnd=" +
@@ -1252,7 +1214,7 @@ const searchAcceptedInvoiceDate = (startDate, endDate, limit) => {
   };
   return axios.get(
     API_URL +
-      "list-accepted-claims" +
+      "list-accepted-claims-kings" +
       "?invoiceStart=" +
       startDate +
       "&invoiceEnd=" +
@@ -1399,9 +1361,9 @@ const getSearchWithDateAccptedClaims = (
   const headers = {
     "Content-Type": "application/json",
   };
-  let query = `${API_URL}list-accepted-claims?startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
+  let query = `${API_URL}list-accepted-claims-kings?startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
   if (col && val) {
-    query = `${API_URL}list-accepted-claims?col=${col}&val=${val}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}list-accepted-claims-kings?col=${col}&val=${val}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
   }
   return axios.get(query, {
     headers: headers,
@@ -1458,9 +1420,9 @@ const getSearchWithInvDateAccptedClaims = (
   const headers = {
     "Content-Type": "application/json",
   };
-  let query = `${API_URL}list-accepted-claims?invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
+  let query = `${API_URL}list-accepted-claims-kings?invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
   if (col && val) {
-    query = `${API_URL}list-accepted-claims?col=${col}&val=${val}&invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}list-accepted-claims-kings?col=${col}&val=${val}&invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
   }
   return axios.get(query, {
     headers: headers,
@@ -1517,9 +1479,9 @@ const getSearchWithInvDateRejectedClaims = (
   const headers = {
     "Content-Type": "application/json",
   };
-  let query = `${API_URL}list-rejected-claims?invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
+  let query = `${API_URL}list-rejected-claims-kings?invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
   if (col && val) {
-    query = `${API_URL}user/claim/dashboard/list-rejected-claims?col=${col}&val=${val}&invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}user/claim/dashboard/list-rejected-claims-kings?col=${col}&val=${val}&invoiceStart=${startDate}&invoiceEnd=${endDate}&limit=${limit}&page=${pageNo}`;
   }
   return axios.get(query, {
     headers: headers,
@@ -1576,9 +1538,9 @@ const getSearchWithDateRejectedClaims = (
   const headers = {
     "Content-Type": "application/json",
   };
-  let query = `${API_URL}list-rejected-claims?startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
+  let query = `${API_URL}list-rejected-claims-kings?startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
   if (col && val) {
-    query = `${API_URL}list-rejected-claims?col=${col}&val=${val}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
+    query = `${API_URL}list-rejected-claims-kings?col=${col}&val=${val}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${pageNo}`;
   }
   return axios.get(query, {
     headers: headers,
@@ -1676,7 +1638,7 @@ const latestClaimsList = () => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "list-latest-claims", {
+  return axios.get(API_URL + "list-latest-claims-kings", {
     headers: headers,
   });
 };
@@ -1685,7 +1647,7 @@ const acceptedClaimsList = () => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "list-accepted-claims", {
+  return axios.get(API_URL + "list-accepted-claims-kings", {
     headers: headers,
   });
 };
@@ -1693,7 +1655,7 @@ const rejectedClaimsList = () => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "list-rejected-claims", {
+  return axios.get(API_URL + "list-rejected-claims-kings", {
     headers: headers,
   });
 };

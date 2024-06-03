@@ -533,17 +533,15 @@ const getPaginatedRejectedClaims = (pageNo, limit) => {
 };
 const getSearchPrevClaimstById = (id, col, val, limit, pageNo) => {
   if (col === "1") {
-    col = "invoice";
+    col = "deliver_invoice";
   } else if (col === "2") {
-    col = "product";
+    col = "description";
   } else if (col === "3") {
-    col = "size";
+    col = "sku";
   } else if (col === "4") {
-    col = "quantity";
+    col = "ship_quantity";
   } else if (col === "5") {
-    col = "spiff";
-  } else if (col === "6") {
-    col = "upc";
+    col = "bonus";
   } else if (col === "7") {
     col = "sale_status";
   } else {
@@ -763,23 +761,19 @@ const getSearchAllRejectedClaims = (col, val, limit, pageNo) => {
 
 const getSearchWithDatePrevClaimstById = (id, col, val, invoiceDate, limit) => {
   if (col === "1") {
-    col = "invoice";
+    col = "deliver_invoice";
   } else if (col === "2") {
-    col = "product";
+    col = "description";
   } else if (col === "3") {
-    col = "size";
+    col = "sku";
   } else if (col === "4") {
-    col = "quantity";
+    col = "ship_quantity";
   } else if (col === "5") {
-    col = "amount";
-  } else if (col === "6") {
-    col = "store";
+    col = "bonus";
   } else if (col === "7") {
-    col = "city";
-  } else if (col === "8") {
-    col = "state";
-  } else if (col === "9") {
-    col = "sale_statu";
+    col = "sale_status";
+  } else {
+    col = "invoice_date";
   }
   const headers = {
     "Content-Type": "application/json",

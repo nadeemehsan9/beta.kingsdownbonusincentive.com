@@ -469,31 +469,31 @@ export default function PrevClaims() {
               </th>
               <th
                 scope="col"
-                onClick={() => requestSort("sale_deliver_invoice_no")}
-                className={getClassNamesFor("sale_deliver_invoice_no")}
+                onClick={() => requestSort("deliver_invoice")}
+                className={getClassNamesFor("deliver_invoice")}
               >
                 Invoice No
               </th>
               <th
                 scope="col"
-                onClick={() => requestSort("product_name")}
-                className={getClassNamesFor("product_name")}
+                onClick={() => requestSort("description")}
+                className={getClassNamesFor("description")}
               >
                 Product Name
               </th>
 
               <th
                 scope="col"
-                onClick={() => requestSort("sale_ship_qty")}
-                className={getClassNamesFor("sale_ship_qty")}
+                onClick={() => requestSort("ship_quantity")}
+                className={getClassNamesFor("ship_quantity")}
               >
                 Quantity
               </th>
 
               <th
                 scope="col"
-                onClick={() => requestSort("sale_reward")}
-                className={getClassNamesFor("sale_reward")}
+                onClick={() => requestSort("reward")}
+                className={getClassNamesFor("reward")}
               >
                 Reward
               </th>
@@ -531,12 +531,12 @@ export default function PrevClaims() {
                       ? index + 1
                       : (currentPage - 1) * limit + index + 1}
                   </td>
-                  <td>{el.sale_deliver_invoice_no}</td>
-                  <td>{el.product_name}</td>
+                  <td>{el.deliver_invoice}</td>
+                  <td>{`${el.sku} / ${el.description} / $${el.bonus}`}</td>
 
-                  <td>{el.sale_ship_qty}</td>
+                  <td>{el.ship_quantity}</td>
 
-                  <td>$ {el.sale_reward}</td>
+                  <td>$ {el.reward}</td>
 
                   <td>{moment(el.invoice_date).format("MM-DD-YYYY")}</td>
 
@@ -547,7 +547,7 @@ export default function PrevClaims() {
                       loading="lazy"
                       onClick={() => {
                         setAttachment(
-                          process.env.REACT_APP_IMAGE_Link + el.sales_file
+                          process.env.REACT_APP_IMAGE_Link + el.file
                         );
                       }}
                       data-bs-toggle="modal"
@@ -667,10 +667,9 @@ export default function PrevClaims() {
                         >
                           <option value="">Select</option>
                           <option value="1">Invoice No</option>
-                          <option value="2">Product Name</option>
-                          <option value="3">Product Size </option>
-                          <option value="5">Product Price</option>
-                          <option value="6">UPC</option>
+                          <option value="3">Levin Sku</option>
+                          <option value="2">Description</option>
+                          <option value="5">Bonus</option>
                           <option value="4">Quantity</option>
                           <option value="7">Status</option>
                         </select>

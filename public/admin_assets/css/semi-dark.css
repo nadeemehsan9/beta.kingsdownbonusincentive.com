@@ -4,12 +4,12 @@ html {
 
 .semi-dark .sidebar-wrapper,
 .semi-dark .sidebar-wrapper .sidebar-header {
-  background-color: #70b0c1;
+  background-color: #696158;
 }
 
 .semi-dark .sidebar-wrapper,
 .semi-dark .sidebar-wrapper .sidebar-header {
-  border-right: 1px solid #70b0c1;
+  border-right: 1px solid #696158;
 }
 
 .semi-dark .top-header .navbar .searchbar .form-control:focus {
@@ -32,10 +32,10 @@ html {
 .semi-dark .sidebar-wrapper .metismenu a:active,
 .semi-dark .sidebar-wrapper .metismenu a:focus,
 .semi-dark .sidebar-wrapper .metismenu a:hover {
-  color: #fff;
+  color: #000;
   text-decoration: none;
-  background: #696158;
-  border-left: 4px solid #ffffff;
+  background: #70b0c1;
+  border-left: 4px solid #fff;
 }
 
 .semi-dark .sidebar-wrapper .metismenu .mm-active > a i,
@@ -62,7 +62,7 @@ html {
 }
 
 .semi-dark .top-header .navbar {
-  background-color: #70b0c1;
+  background-color: #696158;
   box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
 }
 

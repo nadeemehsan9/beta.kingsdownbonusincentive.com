@@ -47,13 +47,13 @@ a {
   font-weight: 400;
   padding-right: 0.8rem;
   padding-left: 0.8rem;
-  background: #70b0c1;
   transition: all 0.4s;
   border-radius: 0.25rem;
+  background: #bdb2a3;
 }
 
 .top-header .navbar .top-navbar-right .nav-link:hover {
-  background: #696158;
+  background: #70b0c1;
   transition: all 0.4s;
 }
 
@@ -360,7 +360,7 @@ a {
 
 /* Handle on hover */
 .error-msg::-webkit-scrollbar-thumb:hover {
-  background: #696158;
+  background: #70b0c1;
 }
 
 .forgot-bot {
@@ -394,7 +394,7 @@ a {
 
 /* Handle */
 .sidebar-wrapper::-webkit-scrollbar-thumb {
-  background: #696158;
+  background: #70b0c1;
 }
 
 /* Handle on hover */
@@ -420,7 +420,8 @@ a {
 }
 
 .sidebar-wrapper .sidebar-header .logo-icon {
-  width: 180px;
+  width: 100px;
+  margin-left: 49px;
 }
 
 .sidebar-wrapper .sidebar-header .logo-text {
@@ -578,7 +579,7 @@ input.main-head {
   font-size: 27px;
   font-family: "Oswald";
   border: 0;
-  border-bottom: 1px solid #696158;
+  border-bottom: 1px solid #70b0c1;
   margin-bottom: 10px;
   width: 100%;
   font-weight: 300;
@@ -587,7 +588,7 @@ input.main-head {
 input.main-head:focus {
   border: 0;
   outline: none;
-  border-bottom: 1px solid #696158;
+  border-bottom: 1px solid #70b0c1;
 }
 
 .form-control.list-input {
@@ -665,18 +666,18 @@ input.main-head:focus {
 /* Handle on hover */
 .claim-details-tab {
   padding: 10px 10px;
-  /* background: #6961580f;
-  border: 1px solid #696158; */
+  /* background: #70b0c10f;
+  border: 1px solid #70b0c1; */
 }
 
 .claim-detail-heading {
-  color: #696158;
+  color: #70b0c1;
   font-size: 22px;
   text-shadow: 0 0 1px #8f8f8f;
 }
 
 .table-responsive::-webkit-scrollbar-thumb:hover {
-  background: #696158;
+  background: #70b0c1;
 }
 
 .drop-zone {
@@ -914,7 +915,7 @@ input.main-head:focus {
   z-index: 5;
 }
 .back-to-top i {
-  color: #fff;
+  color: #000;
 }
 
 .back-to-top:hover {
@@ -923,7 +924,7 @@ input.main-head:focus {
   transition: all 0.5s;
 }
 .back-to-top:hover i {
-  color: #000;
+  color: #fff;
 }
 
 .rzl-tabl thead th {
@@ -1388,7 +1389,9 @@ input.main-head:focus {
   border-color: #70b0c1;
   color: black;
 }
-
+.back-blue i {
+  color: black;
+}
 .noev-pointer {
   pointer-events: none;
 }
@@ -1398,8 +1401,8 @@ header.top-header .welcome-txt {
 }
 
 header.top-header .red-welcome {
-  background-color: #696158;
-  color: #fff;
+  background-color: #70b0c1;
+  color: #000;
 
   height: 69px;
   display: flex;
@@ -1475,12 +1478,12 @@ header.top-header .rig-red {
 }
 
 .table-style-1 thead {
-  background-color: #70b0c1;
-  color: #000;
+  background-color: #696158;
+  color: #fff;
 }
 
 .table-style-1 tbody tr:nth-child(even) {
-  background: #70b0c10d;
+  background: #70b0c1 0d;
 }
 
 .form-control {
@@ -1557,13 +1560,13 @@ select.form-select:focus,
 .form-control:focus {
   color: #000;
   background-color: white;
-  border-color: #696158;
+  border-color: #70b0c1;
   outline: 0;
   box-shadow: none;
 }
 
 h2.ewslet_temp {
-  color: #696158;
+  color: #70b0c1;
   font-size: 25px;
   font-family: "Oswald";
   margin-bottom: 11px;
@@ -1603,7 +1606,7 @@ h2.ewslet_temp {
 .reacter-datepicker .react-datepicker__month-text--keyboard-selected,
 .reacter-datepicker .react-datepicker__quarter-text--keyboard-selected,
 .reacter-datepicker .react-datepicker__year-text--keyboard-selected {
-  background-color: #6961589c;
+  background-color: #70b0c19c;
 }
 
 .reacter-datepicker .react-datepicker__day:hover,
@@ -1625,7 +1628,7 @@ h2.ewslet_temp {
 .reacter-datepicker .react-datepicker__year-text--selected:hover,
 .reacter-datepicker .react-datepicker__year-text--in-selecting-range:hover,
 .reacter-datepicker .react-datepicker__year-text--in-range:hover {
-  background-color: #696158;
+  background-color: #70b0c1;
 }
 
 .reacter-datepicker
@@ -1656,11 +1659,11 @@ h2.ewslet_temp {
     .react-datepicker__quarter-text--in-range,
     .react-datepicker__year-text--in-range
   ) {
-  background-color: #70b0c17d;
+  background-color: #70b0c1 7d;
 }
 
 .reacter-datepicker .react-datepicker__header {
-  background-color: #696158;
+  background-color: #70b0c1;
 }
 
 .reacter-datepicker .react-datepicker__current-month,
@@ -1782,8 +1785,8 @@ h2.ewslet_temp {
 }
 
 .manage-territories-heading {
-  background-color: #70b0c1;
-  color: #000;
+  background-color: #696158;
+  color: #fff;
   padding: 15px;
   font-size: 20px;
   margin-bottom: 15px;
@@ -1843,7 +1846,7 @@ p.help.is-danger {
 
 .form-floating > .form-control:focus {
   box-shadow: none;
-  border-color: #696158;
+  border-color: #70b0c1;
   outline: none;
 }
 
@@ -1945,8 +1948,8 @@ input.form-control.is-danger {
 
 footer {
   padding: 13px 0px;
-  background-color: #70b0c1;
-  color: #000 !important;
+  background-color: #696158;
+  color: #fff !important;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -1979,7 +1982,7 @@ footer {
 }
 
 .initia {
-  color: #696158;
+  color: #70b0c1;
 }
 
 .rob-rollmann li:after {
@@ -1988,7 +1991,7 @@ footer {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 1px solid #696158;
+  border: 1px solid #70b0c1;
   left: 0;
   top: 4px;
 }
@@ -2037,7 +2040,7 @@ footer {
 .back-blue:active:focus i,
 .back-blue:active i,
 .back-blue:focus i {
-  color: black !important;
+  color: white !important;
 }
 
 .back-orange:hover,
@@ -2126,7 +2129,7 @@ input.w-100.cursor-pointer.is-danger {
 
 .bi-book,
 .text-orange {
-  color: #696158;
+  color: #70b0c1;
 }
 
 button.text-orange {
@@ -2220,6 +2223,9 @@ td.add-edit-delete-inline {
   font-size: 13px;
 }
 td.add-edit-delete-inline .back-blue i {
+  color: black;
+}
+td.add-edit-delete-inline .back-blue:hover i {
   color: white;
 }
 
@@ -2499,7 +2505,7 @@ td.add-edit-delete-inline .back-blue i {
   }
 
   header.top-header .red-welcome {
-    background-color: #696158;
+    background-color: #70b0c1;
     height: 50px;
     /* height: 32px; */
     display: flex;
@@ -3092,12 +3098,12 @@ span.count-name3 {
   margin-top: 11px;
 } */
 /* button.btn.btn-danger{
-  background-color: #696158;
-  border: 1px solid #696158;
-} */
-/* button.btn.btn-danger:hover{
   background-color: #70b0c1;
   border: 1px solid #70b0c1;
+} */
+/* button.btn.btn-danger:hover{
+  background-color: #70b0c1 ;
+  border: 1px solid #70b0c1 ;
 } */
 i.fa.fa-balance-scale {
   font-size: 24px;

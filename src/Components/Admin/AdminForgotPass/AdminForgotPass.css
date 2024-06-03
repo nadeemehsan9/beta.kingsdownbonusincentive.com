@@ -14,8 +14,8 @@
   max-width: 1593px;
 }
 .login-admin-1 .logo {
-  margin-bottom: 45px;
-  max-width: 370px;
+  margin-bottom: 25px;
+  max-width: 300px;
 }
 
 .login-admin-1 .app-link a {
@@ -87,12 +87,19 @@ button.admin-forgot {
   margin-top: 17px;
   /* margin-bottom: 20px; */
 }
+button.admin-forgot i,
+a.admin-forgot.btn i {
+  color: white;
+}
 button.admin-forgot:hover {
   background: #70b0c1;
   transition: all 0.4s;
   color: #000;
 }
-
+button.admin-forgot:hover i,
+a.admin-forgot.btn:hover i {
+  color: black;
+}
 a.admin-forgot.btn {
   width: 100%;
   color: #fff;

@@ -125,6 +125,9 @@ span.pending {
   background-image: linear-gradient(to bottom, #696158, #696158);
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #696158;
 }
+span.pending i {
+  color: #fff;
+}
 
 h4.prf-hed {
   font-size: 30px;

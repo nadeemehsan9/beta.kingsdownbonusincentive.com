@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   web-deploy:
@@ -15,7 +15,7 @@ jobs:
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: 🔨 Build Project
         run: |
@@ -24,11 +24,11 @@ jobs:
 
       - name: List output files
         run: find build/ -print
-      
+
       - name: 📂 FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with: 
-          server: ${{ secrets.FTP_SERVER }}
+        with:
+          server: beta.kingsdownincentive.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: build/

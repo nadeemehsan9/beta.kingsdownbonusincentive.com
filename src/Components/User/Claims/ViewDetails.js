@@ -41,8 +41,8 @@ function ViewDetails() {
         setStatus(res[0].sale_status);
         setStore(res[0].retailer_name);
 
-        setProduct(res[0].name);
-        setNumber(res[0].code + "/" + res[0].size + "/$" + res[0].price);
+        setProduct(res[0].code + " / " + res[0].name + " / $" + res[0].price);
+        setNumber(res[0].code + "/" + res[0].name + "/$" + res[0].price);
 
         // setPrice(res[0].price);
         let price =
@@ -189,7 +189,7 @@ function ViewDetails() {
                               </div>
                               <div className="form-filds">
                                 <div className="row">
-                                  <div className="col-lg-4">
+                                  <div className="col-lg-8">
                                     <InputField
                                       placeholder="PRODUCT NAME"
                                       spanText="PRODUCT NAME"
@@ -197,16 +197,6 @@ function ViewDetails() {
                                       fieldType="text"
                                       disabled={true}
                                       values={product}
-                                    />
-                                  </div>
-                                  <div className="col-lg-4">
-                                    <InputField
-                                      placeholder="UPC/Size/Spiff"
-                                      spanText="UPC/Size/Spiff"
-                                      fieldName="UPC/Size/Spiff"
-                                      fieldType="text"
-                                      disabled={true}
-                                      values={number}
                                     />
                                   </div>
 

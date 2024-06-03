@@ -309,7 +309,7 @@ const getClaimDetail = (id) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "get-claim-detail/" + id, {
+  return axios.get(API_URL + "get-claim-detail-kings/" + id, {
     headers: headers,
   });
 };
@@ -328,7 +328,7 @@ const getPrevClaimstById = (id) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "user-previous-claims/" + id, {
+  return axios.get(API_URL + "user-previous-claims-kings/" + id, {
     headers: headers,
   });
 };
@@ -338,7 +338,12 @@ const getLimitPrevClaimstById = (id, limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "user-previous-claims/" + id + "?limit=" + limit + "&page=1",
+    API_URL +
+      "user-previous-claims-kings/" +
+      id +
+      "?limit=" +
+      limit +
+      "&page=1",
     {
       headers: headers,
     }
@@ -479,7 +484,7 @@ const getPaginatedPrevClaimstById = (id, pageNo, limit) => {
   };
   return axios.get(
     API_URL +
-      "user-previous-claims/" +
+      "user-previous-claims-kings/" +
       id +
       "?page=" +
       pageNo +
@@ -549,7 +554,7 @@ const getSearchPrevClaimstById = (id, col, val, limit, pageNo) => {
   };
   return axios.get(
     API_URL +
-      "user-previous-claims/" +
+      "user-previous-claims-kings/" +
       id +
       "?" +
       col +
@@ -781,7 +786,7 @@ const getSearchWithDatePrevClaimstById = (id, col, val, invoiceDate, limit) => {
   };
   return axios.get(
     API_URL +
-      "user-previous-claims/" +
+      "user-previous-claims-kings/" +
       id +
       "?" +
       col +

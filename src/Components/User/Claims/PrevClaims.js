@@ -481,13 +481,6 @@ export default function PrevClaims() {
               >
                 Product Name
               </th>
-              <th
-                scope="col"
-                onClick={() => requestSort("size")}
-                className={getClassNamesFor("size")}
-              >
-                UPC/Size/Spiff
-              </th>
 
               <th
                 scope="col"
@@ -510,13 +503,6 @@ export default function PrevClaims() {
                 className={getClassNamesFor("invoice_date")}
               >
                 Invoice Date
-              </th>
-              <th
-                scope="col"
-                onClick={() => requestSort("sale_added_on")}
-                className={getClassNamesFor("sale_added_on")}
-              >
-                Filed Claim
               </th>
 
               <th
@@ -547,23 +533,12 @@ export default function PrevClaims() {
                   </td>
                   <td>{el.sale_deliver_invoice_no}</td>
                   <td>{el.product_name}</td>
-                  <td>{el.size_code + "/" + el.size + "/$" + el.size_price}</td>
+
                   <td>{el.sale_ship_qty}</td>
 
-                  <td>
-                    ${" "}
-                    {el.custom_price == "yes"
-                      ? el.sale_reward / el.sale_ship_qty
-                      : el.size_price}
-                  </td>
+                  <td>$ {el.sale_reward}</td>
 
                   <td>{moment(el.invoice_date).format("MM-DD-YYYY")}</td>
-
-                  <td>
-                    {el.sale_added_on === "0000-00-00"
-                      ? "N/A"
-                      : moment(el.sale_added_on).format("MM-DD-YYYY")}
-                  </td>
 
                   <td>
                     <Link
@@ -623,7 +598,7 @@ export default function PrevClaims() {
               ))
             ) : (
               <tr>
-                <td colSpan="14" className="text-center text-capitalize">
+                <td colSpan="8" className="text-center text-capitalize">
                   No record found
                 </td>
               </tr>

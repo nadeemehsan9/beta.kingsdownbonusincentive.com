@@ -86,7 +86,7 @@ export default function Welcome() {
                 onClick={() => requestSort("reward")}
                 className={getClassNamesFor("reward")}
               >
-                Amount
+                Total Amount
               </th>
               <th
                 scope="col"

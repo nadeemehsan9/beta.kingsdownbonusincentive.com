@@ -116,7 +116,7 @@ const SubmitClaim = (formData, id, rid) => {
     "Content-Type": "multipart/form-data",
   };
   return axios.post(
-    API_URL + "submit-claim-retailer/" + id + "/" + rid,
+    API_URL + "submit-claim-kings/" + id + "/" + rid,
     formData,
     {
       headers: headers,
@@ -300,7 +300,7 @@ const recentClaim = (id) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "user-recent-claims/" + id, {
+  return axios.get(API_URL + "user-recent-claims-kings/" + id, {
     headers: headers,
   });
 };

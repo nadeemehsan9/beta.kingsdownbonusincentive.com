@@ -83,8 +83,8 @@ export default function Welcome() {
               </th>
               <th
                 scope="col"
-                onClick={() => requestSort("price")}
-                className={getClassNamesFor("price")}
+                onClick={() => requestSort("reward")}
+                className={getClassNamesFor("reward")}
               >
                 Amount
               </th>
@@ -105,58 +105,6 @@ export default function Welcome() {
             </tr>
           </thead>
 
-          {/* <thead className="searchHead">
-          <tr role="row" className="tablesorter-filter-row tablesorter-ignoreRow">
-              <td data-column="0">
-                <input
-                  type="search"
-                  placeholder=""
-                  className="tablesorter-filter disabled"
-                  data-column="0"
-                  disabled=""
-                  data-lastsearchtime="1676628841434"
-                />
-              </td>
-              <td data-column="1">
-                <input
-                  type="search"
-                  placeholder="Search "
-                  className="tablesorter-filter"
-                  data-column="1"
-                  data-lastsearchtime="1676628841434"
-                />
-              </td>
-              <td data-column="2">
-                <input
-                  type="search"
-                  placeholder="Search "
-                  className="tablesorter-filter"
-                  data-column="2"
-                  data-lastsearchtime="1676628841434"
-                />
-              </td>
-              <td data-column="3">
-                <input
-                  type="search"
-                  placeholder="Search "
-                  className="tablesorter-filter"
-                  data-column="3"
-                  data-lastsearchtime="1676628841434"
-                />
-              </td>
-              <td data-column="4">
-                <input
-                  type="search"
-                  placeholder=""
-                  className="tablesorter-filter disabled"
-                  data-column="4"
-                  disabled=""
-                  data-lastsearchtime="1676628841434"
-                />
-              </td>
-            </tr>
-          </thead> */}
-
           <tbody>
             {items.length ? (
               items.map((el, index) => (
@@ -164,12 +112,7 @@ export default function Welcome() {
                   <td>{index + 1}</td>
                   <td>{el.deliver_invoice}</td>
                   {/* <td>{"$ " + el.price}</td> */}
-                  <td>
-                    ${" "}
-                    {el.custom_price == "yes"
-                      ? el.reward / el.ship_quantity
-                      : el.price}
-                  </td>
+                  <td>$ {el.reward}</td>
 
                   {el.sale_status === "rejected" && (
                     <td className="rejected" style={{ color: "#dc3545" }}>

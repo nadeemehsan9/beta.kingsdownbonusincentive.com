@@ -107,7 +107,7 @@
 }
 @media (min-width: 320px) and (max-width: 767px) {
   .main-ban {
-    background-position-x: center;
+    background-position: center;
   }
 }
 @media (min-width: 320px) and (max-width: 767px) {

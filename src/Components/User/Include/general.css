@@ -615,7 +615,7 @@ span.gen-txt1 {
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .user-panel header img.logo {
-    max-width: 215px;
+    max-width: 145px;
     margin: 0 auto;
     display: block;
   }
@@ -644,6 +644,7 @@ span.gen-txt1 {
   }
   .user-panel .main-ban {
     min-height: 740px;
+    background-position: center;
   }
 }
 
@@ -652,6 +653,10 @@ span.gen-txt1 {
     padding-top: 15px;
     min-height: auto;
     padding-bottom: 100px;
+    background-position: center;
+  }
+  div#FileClaimsBox {
+    padding: 1px 42px !important;
   }
   .user-panel header .top-contacts {
     padding: 7px 10px;
@@ -837,6 +842,10 @@ span.gen-txt1 {
     padding-top: 15px;
     min-height: auto;
     padding-bottom: 100px;
+    background-position: center;
+  }
+  ul.timeline {
+    padding-left: 22px !important;
   }
   .user-panel header .top-contacts {
     padding: 7px 10px;
@@ -940,8 +949,12 @@ span.gen-txt1 {
     margin-bottom: 0;
   }
   .user-panel .mban-ligh {
-    font-size: 38px;
+    font-size: 40px;
     margin-top: 0px;
+  }
+  h2#home,
+  .user-panel .gen-hed span {
+    font-size: 36px !important;
   }
   .user-panel .traning-awards .red-round-btn {
     margin: 0 auto;

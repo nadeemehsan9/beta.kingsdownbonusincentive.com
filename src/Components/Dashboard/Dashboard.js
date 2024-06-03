@@ -176,14 +176,6 @@ export default function Dashboard() {
 
               <th
                 scope="col"
-                onClick={() => requestSort("size")}
-                className={getClassNamesFor("size")}
-              >
-                UPC/Size/Spiff
-              </th>
-
-              <th
-                scope="col"
                 onClick={() => requestSort("quantity")}
                 className={getClassNamesFor("quantity")}
               >
@@ -249,8 +241,8 @@ export default function Dashboard() {
                   </td>
                   <td>{convertObject(el.empNum)}</td>
                   <td>{convertObject(el.deliver_invoice)}</td>
-                  <td>{convertObject(el.prodName)}</td>
-                  <td>{`${el.code}/${el.size}/$${el.price}`}</td>
+                  {/* <td>{convertObject(el.prodName)}</td> */}
+                  <td>{`${el.code}/${el.prodName}/$${el.price}`}</td>
                   <td>{convertObject(el.ship_quantity)}</td>
 
                   <td>${el.price * el.ship_quantity}</td>

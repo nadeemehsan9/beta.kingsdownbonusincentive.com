@@ -1658,7 +1658,7 @@ const pendingClaims = () => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "count-pending-claims", {
+  return axios.get(API_URL + "count-pending-claims-kings", {
     headers: headers,
   });
 };
@@ -1667,7 +1667,7 @@ const pendingClaimsList = () => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "user-limited-latest-claims", {
+  return axios.get(API_URL + "user-limited-latest-claims-kings", {
     headers: headers,
   });
 };

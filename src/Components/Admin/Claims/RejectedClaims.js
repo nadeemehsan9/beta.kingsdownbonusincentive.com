@@ -947,8 +947,8 @@ export default function RejectedClaims() {
               <th
                 width="11%"
                 scope="col"
-                onClick={() => requestSort("product")}
-                className={getClassNamesFor("product")}
+                onClick={() => requestSort("description")}
+                className={getClassNamesFor("description")}
               >
                 Product Info
               </th>

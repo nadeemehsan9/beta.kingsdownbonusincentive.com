@@ -112,7 +112,7 @@ export default function ArchivedClaim() {
     singleSelections = selectedRecords;
     $(".export-selection").attr(
       "href",
-      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-clm/${selectedRecords}?time=${time}`
+      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-kings/${selectedRecords}?time=${time}`
     );
     // FIXME length void click issue
     console.log(singleSelections.length);
@@ -130,7 +130,7 @@ export default function ArchivedClaim() {
     console.log(allSelections);
     $(".export-selection").attr(
       "href",
-      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-clm/${allSelections}?time=${time}`
+      `https://beta.api.selectyourrebate.com/v1/export-selected-claims-kings/${allSelections}?time=${time}`
     );
   };
 
@@ -1026,8 +1026,8 @@ export default function ArchivedClaim() {
               <th
                 width="11%"
                 scope="col"
-                onClick={() => requestSort("product")}
-                className={getClassNamesFor("product")}
+                onClick={() => requestSort("description")}
+                className={getClassNamesFor("description")}
               >
                 Product Info
               </th>
@@ -1138,11 +1138,8 @@ export default function ArchivedClaim() {
                   <td>
                     <ul className="rob-rollmann">
                       <li>
-                        <b>Name:</b> {el.prodName}
-                      </li>
-                      <li>
-                        <b>UPC/Size/Spiff:</b>{" "}
-                        {`${el.code}/${el.size}/$${el.price}`}
+                        <b>Levin Sku/Description/Bonus:</b>{" "}
+                        {`${el.sku}/${el.description}/$${el.bonus}`}
                       </li>
                     </ul>
                   </td>
@@ -1296,7 +1293,7 @@ export default function ArchivedClaim() {
                       <a
                         className="btn btn-primary back-orange export-rang w-100"
                         style={styles.range}
-                        href={`${API_URL}export-range-claims-clm/archive/approved/${startDate}/${endDate}?time=${time}`}
+                        href={`${API_URL}export-range-claims-kings/archive/approved/${startDate}/${endDate}?time=${time}`}
                       >
                         Export by range
                       </a>
@@ -1351,7 +1348,7 @@ export default function ArchivedClaim() {
                       <a
                         className="btn btn-primary back-orange export-rang w-100"
                         style={styles.invRange}
-                        href={`${API_URL}export-range-invoice-claims-clm/archive/approved/${startInvDate}/${endInvDate}?time=${time}`}
+                        href={`${API_URL}export-range-invoice-claims-kings/archive/approved/${startInvDate}/${endInvDate}?time=${time}`}
                       >
                         Export by range
                       </a>
@@ -1387,10 +1384,9 @@ export default function ArchivedClaim() {
                           <option value="5">Employee #</option>
                           <option value="6">Invoice #</option>
                           <option value="7">Retailer</option>
-                          <option value="12">Product Name</option>
-                          <option value="13">Product Code</option>
-                          <option value="14">Product Size</option>
-                          <option value="17">Product Price</option>
+                          <option value="13">Levin SKU</option>
+                          <option value="12">Description</option>
+                          <option value="17">Bonus</option>
                           <option value="15">Role</option>
                           <option value="16">Quantity</option>
                         </select>

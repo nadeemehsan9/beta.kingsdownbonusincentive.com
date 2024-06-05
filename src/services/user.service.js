@@ -128,7 +128,7 @@ const rejectClaimById = (formData, id) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.post(API_URL + "reject-claim-clm/" + id, formData, {
+  return axios.post(API_URL + "reject-claim-kings/" + id, formData, {
     headers: headers,
   });
 };
@@ -136,7 +136,7 @@ const acceptClaimById = (formData, id) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.post(API_URL + "accept-claim-clm/" + id, formData, {
+  return axios.post(API_URL + "accept-claim-kings/" + id, formData, {
     headers: headers,
   });
 };
@@ -145,7 +145,7 @@ const acceptSelectedClaims = (formData) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.post(API_URL + "accept-selected-claims-clm", formData, {
+  return axios.post(API_URL + "accept-selected-claims-kings", formData, {
     headers: headers,
   });
 };
@@ -154,7 +154,7 @@ const acceptAllClaims = (formData) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.post(API_URL + "accept-all-claims-clm", formData, {
+  return axios.post(API_URL + "accept-all-claims-kings ", formData, {
     headers: headers,
   });
 };
@@ -163,7 +163,7 @@ const rejectSelectedClaims = (formData) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.post(API_URL + "reject-selected-claims-clm", formData, {
+  return axios.post(API_URL + "reject-selected-claims-kings", formData, {
     headers: headers,
   });
 };
@@ -172,7 +172,7 @@ const updateClaimPending = (formData, id) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.put(`${API_URL}pending-claim/${id}`, formData, {
+  return axios.put(`${API_URL}pending-claim-kings/${id}`, formData, {
     headers: headers,
   });
 };
@@ -181,7 +181,7 @@ const rejectAllClaims = (formData) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.post(API_URL + "reject-all-claims-clm", formData, {
+  return axios.post(API_URL + "reject-all-claims-kings", formData, {
     headers: headers,
   });
 };
@@ -447,7 +447,7 @@ const getAllArchivedClaims = (year, limit) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    API_URL + "list-year-claims/" + year + "?limit=" + limit + "&page=1",
+    API_URL + "list-year-claims-kings/" + year + "?limit=" + limit + "&page=1",
     {
       headers: headers,
     }
@@ -663,7 +663,7 @@ const getSearchAllArchivedClaims = (year, col, val, limit, pageNo) => {
     "Content-Type": "application/json",
   };
   return axios.get(
-    `${API_URL}list-year-claims/${year}?${col}=${val}&limit=${limit}&page=${pageNo}`,
+    `${API_URL}list-year-claims-kings/${year}?${col}=${val}&limit=${limit}&page=${pageNo}`,
     {
       headers: headers,
     }
@@ -881,7 +881,7 @@ const getSearchWithoutDateAllArchivedClaims = (year, col, val, limit) => {
   };
   return axios.get(
     API_URL +
-      "list-year-claims/" +
+      "list-year-claims-kings/" +
       year +
       "?" +
       col +
@@ -1021,11 +1021,11 @@ const getPaginatedAllArchivedClaims = (
 
   let query = ``;
   if (startDate && endDate) {
-    query = `${API_URL}list-year-claims/${year}?startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-year-claims-kings/${year}?startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
   } else if (startInvDate && endInvDate) {
-    query = `${API_URL}list-year-claims/${year}?invoiceStart=${startInvDate}&invoiceEnd=${endInvDate}&page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-year-claims-kings/${year}?invoiceStart=${startInvDate}&invoiceEnd=${endInvDate}&page=${pageNo}&limit=${limit}`;
   } else {
-    query = `${API_URL}list-year-claims/${year}?page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-year-claims-kings/${year}?page=${pageNo}&limit=${limit}`;
   }
 
   return axios.get(query, {
@@ -1243,9 +1243,9 @@ const getSearchWithDateAllArchivedClaims = (
   console.log("endpoint called");
   let query = ``;
   if (startDate && endDate) {
-    query = `${API_URL}list-year-claims/${year}?startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-year-claims-kings/${year}?startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
   } else if (invoiceStart && invoiceEnd) {
-    query = `${API_URL}list-year-claims/${year}?invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-year-claims-kings/${year}?invoiceStart=${invoiceStart}&invoiceEnd=${invoiceEnd}&page=${pageNo}&limit=${limit}`;
   }
   return axios.get(query, {
     headers: headers,
@@ -1274,37 +1274,25 @@ const getSearchWithDatesAllArchivedClaims = (
   } else if (col === "6") {
     col = "invoice";
   } else if (col === "7") {
-    col = "invoice_date";
-  } else if (col === "8") {
-    col = "created_at";
-  } else if (col === "9") {
-    col = "account";
-  } else if (col === "10") {
-    col = "store";
-  } else if (col === "11") {
-    col = "state";
+    col = "retailer";
   } else if (col === "12") {
-    col = "city";
+    col = "description";
   } else if (col === "13") {
-    col = "zip";
-  } else if (col === "14") {
-    col = "product";
+    col = "sku";
   } else if (col === "15") {
-    col = "size";
-  } else if (col === "16") {
-    col = "status";
-  } else if (col === "17") {
     col = "role";
-  } else if (col === "18") {
+  } else if (col === "16") {
     col = "quantity";
-  } else if (col === "19") {
-    col = "price";
+  } else if (col === "17") {
+    col = "bonus";
+  } else if (col === "18") {
+    col = "totalPrice";
   }
   const headers = {
     "Content-Type": "application/json",
   };
 
-  let query = `${API_URL}list-year-claims/${year}?${col}=${val}&startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
+  let query = `${API_URL}list-year-claims-kings/${year}?${col}=${val}&startDate=${startDate}&endDate=${endDate}&page=${pageNo}&limit=${limit}`;
   return axios.get(query, {
     headers: headers,
   });

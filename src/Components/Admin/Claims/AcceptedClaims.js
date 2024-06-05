@@ -893,8 +893,8 @@ export default function AcceptedClaims() {
               <th
                 width="11%"
                 scope="col"
-                onClick={() => requestSort("product")}
-                className={getClassNamesFor("product")}
+                onClick={() => requestSort("description")}
+                className={getClassNamesFor("description")}
               >
                 Product Info
               </th>
@@ -1182,7 +1182,7 @@ export default function AcceptedClaims() {
                           <a
                             className="btn btn-primary back-orange export-rang w-100"
                             style={styles.range}
-                            href={`${API_URL}list-rejected-claims-kings/normal/approved/${startDate}/${endDate}`}
+                            href={`${API_URL}export-range-claims-kings/normal/approved/${startDate}/${endDate}`}
                           >
                             Export by range
                           </a>

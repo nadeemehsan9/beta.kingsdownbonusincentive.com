@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 export default function SeeAttachment(props) {
   // const [isPdf, setIsPdf] = useState(false);
+  const [image, setImage] = useState(props.src);
 
-  var image = props.src;
   // var splitImg = image.split(".");
   // var isPdf = splitImg[1] == "pdf" ? "pdf" : "image";
   var isPdf = image.endsWith(".pdf") ? "pdf" : "image";
@@ -15,6 +15,9 @@ export default function SeeAttachment(props) {
   // const onImageError = (e) => {
   //   e.target.src = noImage;
   // };
+  const onImageError = () => {
+    setImage(noImage);
+  };
   return (
     <div
       className="modal fade"
@@ -45,7 +48,12 @@ export default function SeeAttachment(props) {
                 style={{ width: "48rem", height: "38rem" }}
               />
             ) : (
-              <img src={image} alt="no url" className="img-fluid" />
+              <img
+                src={image}
+                alt="no url"
+                className="img-fluid"
+                onError={onImageError}
+              />
             )}
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 export default function SeeAttachment(props) {
   // const [isPdf, setIsPdf] = useState(false);
-  const [image, setImage] = useState(props.src);
+  const [image, setImage] = useState("");
 
   // var splitImg = image.split(".");
   // var isPdf = splitImg[1] == "pdf" ? "pdf" : "image";
@@ -11,10 +11,10 @@ export default function SeeAttachment(props) {
   const noImage =
     "https://res.cloudinary.com/sparkcloudsforewards/image/upload/v1678783786/No_Image_Available_izjkwf.jpg";
   const pdfImage = props.src;
+  useEffect(() => {
+    setImage(props.src);
+  }, [props]);
 
-  // const onImageError = (e) => {
-  //   e.target.src = noImage;
-  // };
   const onImageError = () => {
     setImage(noImage);
   };

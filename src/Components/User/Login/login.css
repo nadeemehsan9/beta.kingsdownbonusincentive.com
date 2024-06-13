@@ -14,6 +14,11 @@
   max-width: 1593px;
   width: 100%;
 }
+.login-1 .logo-img {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
 .login-1 .logo {
   margin-top: 48px;
   margin-bottom: 94px;

@@ -124,7 +124,7 @@ export default function Login() {
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-lg-4 center-it">
-              <Link to="/">
+              <Link to="/" className="logo-img">
                 <img src="images/logo.png" className="logo" alt="" />
               </Link>
               <div className="content-login">

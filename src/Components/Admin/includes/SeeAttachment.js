@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 export default function SeeAttachment(props) {
   // const [isPdf, setIsPdf] = useState(false);
   const [image, setImage] = useState("");

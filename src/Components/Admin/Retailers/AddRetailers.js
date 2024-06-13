@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-import { addProductSchema } from "../../../schema";
+import { addRetailerSchema } from "../../../schema";
 import AdminListService from "../../../services/admin-list.service";
 
 import AdminFooter from "../includes/AdminFooter";
@@ -10,7 +10,7 @@ import CheckUtype from "../includes/CheckUtype";
 
 import HeaderSidebar from "../includes/HeaderSidebar";
 import ToTop from "../includes/ToTop";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLayoutEffect } from "react";
 import axios from "axios";
 import secureLocalStorage from "react-secure-storage";
@@ -99,7 +99,7 @@ export default function AddRetailers() {
       initialValues: {
         productName: "",
       },
-      validationSchema: addProductSchema,
+      validationSchema: addRetailerSchema,
       onSubmit: (values, action) => {
         addRetailer(values, action);
       },

@@ -45,8 +45,8 @@ export default function AddProduct() {
       }
     } catch (err) {
       console.log(err);
-      if (err?.response?.data?.name?.length) {
-        toast.error(err.response.data.name[0], {
+      if (err?.response?.data?.sku?.length) {
+        toast.error(err.response.data.sku[0], {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: true,
@@ -98,6 +98,8 @@ export default function AddProduct() {
     useFormik({
       initialValues: {
         productName: "",
+        bonus: "",
+        sku: "",
       },
       validationSchema: addProductSchema,
       onSubmit: (values, action) => {
@@ -141,12 +143,14 @@ export default function AddProduct() {
                     <div className="manage-territories-box">
                       <form onSubmit={handleSubmit} noValidate>
                         <div className="row">
-                          <div className="col-lg-7">
-                            <label className="form-label">Product Name</label>
+                          <div className="col-lg-6">
+                            <label className="form-label">
+                              Levin Description
+                            </label>
                             <div className="form-floating">
                               <input
                                 type="text"
-                                placeholder="Product Name"
+                                placeholder="Levin Description"
                                 className={`form-control ${
                                   errors.productName && touched.productName
                                     ? "is-danger"
@@ -158,11 +162,56 @@ export default function AddProduct() {
                                 value={values.productName || ""}
                                 required
                               />
-                              <label>Product Name</label>
+                              <label>Levin Description</label>
                               {errors.productName && touched.productName ? (
                                 <p className="help is-danger">
                                   {errors.productName}
                                 </p>
+                              ) : null}
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <label className="form-label">Sku</label>
+                            <div className="form-floating">
+                              <input
+                                type="text"
+                                placeholder="Sku"
+                                className={`form-control ${
+                                  errors.sku && touched.sku ? "is-danger" : ""
+                                }`}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                name="sku"
+                                value={values.sku || ""}
+                                required
+                              />
+                              <label>Sku</label>
+                              {errors.sku && touched.sku ? (
+                                <p className="help is-danger">{errors.sku}</p>
+                              ) : null}
+                            </div>
+                          </div>
+                          <div className="col-lg-6">
+                            <label className="form-label">Bonus</label>
+                            <div className="form-floating">
+                              <input
+                                type="number"
+                                min={1}
+                                placeholder="Bonus"
+                                className={`form-control ${
+                                  errors.bonus && touched.bonus
+                                    ? "is-danger"
+                                    : ""
+                                }`}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                name="bonus"
+                                value={values.bonus || ""}
+                                required
+                              />
+                              <label>Bonus</label>
+                              {errors.bonus && touched.bonus ? (
+                                <p className="help is-danger">{errors.bonus}</p>
                               ) : null}
                             </div>
                           </div>

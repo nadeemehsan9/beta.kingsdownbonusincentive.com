@@ -254,11 +254,7 @@ export default function HeaderSidebar() {
                   <i className="bi bi-circle"></i>Add Product
                 </Link>
               </li>
-              <li>
-                <Link to="/admin/add-product-size">
-                  <i className="bi bi-circle"></i>Add Product Size
-                </Link>
-              </li>
+
               <li>
                 <Link to="/admin/view-product">
                   <i className="bi bi-circle"></i>View All Products

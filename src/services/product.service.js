@@ -11,15 +11,6 @@ const getProductList = () => {
   });
 };
 
-const getProductForSize = () => {
-  const headers = {
-    "Content-Type": "application/json",
-  };
-  return axios.get(API_URL + "list-product", {
-    headers: headers,
-  });
-};
-
 const getProduct = () => {
   const headers = {
     "Content-Type": "application/json",
@@ -43,7 +34,6 @@ const ProductService = {
 
   getSizeByUserProduct,
   getProductList,
-  getProductForSize,
 };
 
 export default ProductService;

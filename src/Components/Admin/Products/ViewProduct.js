@@ -15,7 +15,7 @@ import ToTop from "../includes/ToTop";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function ViewProduct() {
   const TITLE = "Kings Down | View All Product";
@@ -45,6 +45,7 @@ export default function ViewProduct() {
         setTotalResults(response.data.records);
         setTotalPages(response.data.total_pages);
         setLimit(response.data.per_page);
+        setCurrentPage(1);
         setLoading(false);
       } else if (values.fieldtype === "" || values.searchval === "") {
         setLoading(false);
@@ -297,32 +298,32 @@ export default function ViewProduct() {
             <tr>
               <th
                 scope="col"
-                onClick={() => requestSort("size_id")}
-                className={getClassNamesFor("size_id")}
+                onClick={() => requestSort("id")}
+                className={getClassNamesFor("id")}
               >
                 No
               </th>
               <th
                 scope="col"
-                onClick={() => requestSort("product_name")}
-                className={getClassNamesFor("product_name")}
+                onClick={() => requestSort("description")}
+                className={getClassNamesFor("description")}
               >
-                Product
+                Levin Description
               </th>
               <th
                 scope="col"
-                onClick={() => requestSort("size_code")}
-                className={getClassNamesFor("size_code")}
+                onClick={() => requestSort("sku")}
+                className={getClassNamesFor("sku")}
               >
-                UPC/Size
+                Sku
               </th>
 
               <th
                 scope="col"
-                onClick={() => requestSort("size_price")}
-                className={getClassNamesFor("size_price")}
+                onClick={() => requestSort("bonus")}
+                className={getClassNamesFor("bonus")}
               >
-                Spiff
+                Bonus
               </th>
 
               <th
@@ -337,29 +338,27 @@ export default function ViewProduct() {
           <tbody>
             {items.length ? (
               items.map((el, index) => (
-                <tr key={el.size_id}>
+                <tr key={el.id}>
                   <td>
                     {currentPage === 1
                       ? index + 1
                       : (currentPage - 1) * limit + index + 1}
                   </td>
-                  <td>{el.product_name}</td>
+                  <td>{el.description}</td>
 
-                  <td>
-                    {el.size_code}/{el.size}
-                  </td>
-                  <td>${el.size_price}</td>
+                  <td>{el.sku}</td>
+                  <td>${el.bonus}</td>
 
                   <td className="add-edit-delete-inline text-start">
                     <Link
-                      to={"/admin/edit-product/" + el.size_id}
+                      to={"/admin/edit-product/" + el.id}
                       className="btn btn-primary px-4 back-blue"
                     >
                       Edit <i className="bi bi-pencil-fill"></i>{" "}
                     </Link>
                     <button
                       className="btn btn-primary px-4 back-blue"
-                      onClick={() => delData(el.size_id)}
+                      onClick={() => delData(el.id)}
                     >
                       Delete <i className="bi bi-trash-fill"></i>
                     </button>
@@ -416,6 +415,7 @@ export default function ViewProduct() {
       <div className="semi-dark">
         <div className="wrapper">
           <HeaderSidebar />
+          <ToastContainer />
           <main className="page-content">
             <div className="row">
               <div className="col">
@@ -447,10 +447,9 @@ export default function ViewProduct() {
                             required
                           >
                             <option value="">Select</option>
-                            <option value="1">Product</option>
-                            <option value="3">UPC </option>
-                            <option value="2">Size </option>
-                            <option value="4">Spiff </option>
+                            <option value="1">Description</option>
+                            <option value="2">Sku </option>
+                            <option value="3">Bonus </option>
                           </select>
                           {errors.fieldtype && touched.fieldtype ? (
                             <p className="help is-danger">{errors.fieldtype}</p>
@@ -518,7 +517,7 @@ export default function ViewProduct() {
                         <div class="col-lg-2 text-end">
                           <a
                             class="btn btn-outline-secondary sebmit-dat"
-                            href={`${process.env.REACT_APP_API_Link}export-products?time=${time}`}
+                            href={`${process.env.REACT_APP_API_Link}export-products-kings?time=${time}`}
                           >
                             Export All
                           </a>

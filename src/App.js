@@ -13,7 +13,7 @@ import ViewRsa from "./Components/Admin/Participants/ViewRSAs";
 import ProfileAdmin from "./Components/Admin/ProfileAdmin/ProfileAdmin";
 
 import AddProduct from "./Components/Admin/Products/AddProduct";
-import AddProductSize from "./Components/Admin/Products/AddProductSize";
+
 import ViewProduct from "./Components/Admin/Products/ViewProduct";
 import ReportsHistory from "./Components/Admin/Reports/ReportsHistory";
 
@@ -209,7 +209,7 @@ function App() {
       <Route path="/admin/edit/:type/:id" element={<EditUser />} />
 
       <Route path="/admin/add-product" element={<AddProduct />} />
-      <Route path="/admin/add-product-size" element={<AddProductSize />} />
+
       <Route path="/admin/view-product" element={<ViewProduct />} />
       <Route path="/admin/reports-history" element={<ReportsHistory />} />
 

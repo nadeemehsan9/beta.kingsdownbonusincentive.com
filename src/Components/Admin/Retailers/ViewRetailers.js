@@ -15,7 +15,7 @@ import ToTop from "../includes/ToTop";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function ViewRetailers() {
   const TITLE = "Kings Down | View All Product";
@@ -385,6 +385,7 @@ export default function ViewRetailers() {
       <div className="semi-dark">
         <div className="wrapper">
           <HeaderSidebar />
+          <ToastContainer />
           <main className="page-content">
             <div className="row">
               <div className="col">

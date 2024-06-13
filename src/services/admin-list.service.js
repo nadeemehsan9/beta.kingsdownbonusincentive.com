@@ -109,30 +109,11 @@ const addProduct = (values) => {
     "Content-Type": "application/json",
   };
   return axios.post(
-    API_URL + "add-product",
+    API_URL + "add-product-kings",
     {
-      name: values.productName,
-
-      created_by: values.id,
-      created_ip: secureLocalStorage.getItem("ip"),
-    },
-    {
-      headers: headers,
-    }
-  );
-};
-
-const addProductSize = (values) => {
-  const headers = {
-    "Content-Type": "application/json",
-  };
-  return axios.post(
-    API_URL + "add-product-size",
-    {
-      prod_id: values.productName,
-      upc: values.upc,
-      size: values.size,
-      spiff: values.spiff,
+      description: values.productName,
+      sku: values.sku,
+      bonus: values.bonus,
 
       created_by: values.id,
       created_ip: secureLocalStorage.getItem("ip"),
@@ -175,7 +156,7 @@ const getNewLimitProductList = (limit) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(`${API_URL}list-products?limit=${limit}`, {
+  return axios.get(`${API_URL}list-products-kings?limit=${limit}`, {
     headers: headers,
   });
 };
@@ -200,21 +181,22 @@ const getSearchReportHistory = (col, val, limit, page) => {
 };
 const getSearchProductList = (col, val, limit) => {
   if (col === "1") {
-    col = "title";
+    col = "description";
   } else if (col === "2") {
-    col = "size";
+    col = "sku";
   } else if (col === "3") {
-    col = "upc";
-  } else if (col === "4") {
-    col = "spiff";
+    col = "bonus";
   }
   const headers = {
     "Content-Type": "application/json",
   };
 
-  return axios.get(`${API_URL}list-products?${col}=${val}&limit=${limit}`, {
-    headers: headers,
-  });
+  return axios.get(
+    `${API_URL}list-products-kings?${col}=${val}&limit=${limit}`,
+    {
+      headers: headers,
+    }
+  );
 };
 
 const getPaginatedReportHistory = (pageNo, limit) => {
@@ -233,19 +215,17 @@ const getPaginationProductList = (col, val, pageNo, limit) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  if (col == 1) {
-    col = "title";
-  } else if (col == 2) {
-    col = "size";
-  } else if (col == 3) {
-    col = "code";
-  } else if (col == 4) {
-    col = "price";
+  if (col === "1") {
+    col = "description";
+  } else if (col === "2") {
+    col = "sku";
+  } else if (col === "3") {
+    col = "bonus";
   }
-  let query = `${API_URL}list-products?page=${pageNo}&limit=${limit}`;
+  let query = `${API_URL}list-products-kings?page=${pageNo}&limit=${limit}`;
 
   if (col && val) {
-    query = `${API_URL}list-products?${col}=${val}&page=${pageNo}&limit=${limit}`;
+    query = `${API_URL}list-products-kings?${col}=${val}&page=${pageNo}&limit=${limit}`;
   }
   return axios.get(query, {
     headers: headers,
@@ -265,7 +245,7 @@ const getProductList = () => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(API_URL + "list-products", {
+  return axios.get(API_URL + "list-products-kings", {
     headers: headers,
   });
 };
@@ -274,7 +254,7 @@ const getProductPriceBySizeId = (id) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.get(`${API_URL}get-price-by-size/${id}`, {
+  return axios.get(`${API_URL}get-info-by-product-king/${id}`, {
     headers: headers,
   });
 };
@@ -285,9 +265,9 @@ const updateProductList = (id, values) => {
     "Content-Type": "application/json",
   };
   return axios.put(
-    `${API_URL}update-product/${id}`,
+    `${API_URL}update-product-kings/${id}`,
     {
-      price: values.price,
+      bonus: values.price,
       updated_by: values.updated_by,
       updated_ip: secureLocalStorage.getItem("ip"),
     },
@@ -340,7 +320,7 @@ const updateRetailer = (id, values) => {
   return axios.put(
     `${API_URL}update-retailer/${id}`,
     {
-      name: values.price,
+      name: values.productName,
       updated_by: values.updated_by,
       updated_ip: secureLocalStorage.getItem("ip"),
     },
@@ -641,7 +621,7 @@ const deleteProduct = (recordId) => {
   const headers = {
     "Content-Type": "application/json",
   };
-  return axios.delete(`${API_URL}delete-product/${recordId}`, {
+  return axios.delete(`${API_URL}delete-product-kings/${recordId}`, {
     headers: headers,
     data: {
       deleted_by: 1,
@@ -769,7 +749,7 @@ const AdminListService = {
   getSearchRsaStoreList,
   getSearchRsaStoreListDeactivated,
   addProduct,
-  addProductSize,
+
   addRetailer,
 
   getNewLimitProductList,

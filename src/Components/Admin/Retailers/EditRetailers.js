@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import secureLocalStorage from "react-secure-storage";
 import { toast, ToastContainer } from "react-toastify";
 
-import { UpdateProduct } from "../../../schema";
+import { UpdateProduct, addRetailerSchema } from "../../../schema";
 import AdminListService from "../../../services/admin-list.service";
 
 import AdminFooter from "../includes/AdminFooter";
@@ -135,9 +135,9 @@ export default function EditRetailers() {
     useFormik({
       enableReinitialize: true,
       initialValues: {
-        price: price,
+        productName: price,
       },
-      validationSchema: UpdateProduct,
+      validationSchema: addRetailerSchema,
       onSubmit: (values, action) => {
         updateProduct(values);
       },
@@ -177,16 +177,18 @@ export default function EditRetailers() {
                               type="text"
                               placeholder="Retailer Name"
                               className={`form-control ${
-                                errors.price && touched.price ? "is-danger" : ""
+                                errors.productName && touched.productName
+                                  ? "is-danger"
+                                  : ""
                               }`}
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              name="price"
-                              value={values.price || ""}
+                              name="productName"
+                              value={values.productName || ""}
                               required
                             />
                             <label>Retailer Name</label>
-                            {errors.price && touched.price ? (
+                            {errors.productName && touched.productName ? (
                               <p className="help is-danger">
                                 Please fill the Retailer Name
                               </p>

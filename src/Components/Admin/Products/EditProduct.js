@@ -22,7 +22,7 @@ export default function EditProduct() {
   const [loading, setLoading] = useState(false);
   const [price, setPrice] = useState("");
   const [product, setProduct] = useState("");
-  const [size, setSize] = useState("");
+
   const [upc, setUpc] = useState("");
 
   const { id: prodId } = useParams();
@@ -34,10 +34,10 @@ export default function EditProduct() {
       try {
         const { data } = await AdminListService.getProductPriceBySizeId(prodId);
         const { response: res } = data;
-        setPrice(res.price);
-        setProduct(res.product_name);
-        setSize(res.size);
-        setUpc(res.code);
+        setPrice(res.bonus);
+        setProduct(res.description);
+
+        setUpc(res.sku);
 
         setLoading(false);
       } catch (err) {
@@ -167,7 +167,7 @@ export default function EditProduct() {
                         <div class="col-sm-6">
                           <div class="form-group">
                             <p>
-                              <strong> Product</strong>
+                              <strong> Levin Description</strong>
                               <br />
                               {product}
                             </p>
@@ -176,14 +176,14 @@ export default function EditProduct() {
                         <div class="col-sm-6">
                           <div class="form-group">
                             <p>
-                              <strong> UPC/Size</strong>
+                              <strong>Sku</strong>
                               <br />
-                              {upc}/{size}
+                              {upc}
                             </p>
                           </div>
                         </div>
                         <div className="col-lg-6">
-                          <label className="form-label">Spiff:</label>
+                          <label className="form-label">Bonus:</label>
                           <div className="form-floating">
                             <input
                               type="number"
@@ -197,7 +197,7 @@ export default function EditProduct() {
                               value={values.price || ""}
                               required
                             />
-                            <label>Spiff</label>
+                            <label>Bonus</label>
                             {errors.price && touched.price ? (
                               <p className="help is-danger">{errors.price}</p>
                             ) : null}

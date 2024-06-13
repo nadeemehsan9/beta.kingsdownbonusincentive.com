@@ -138,19 +138,24 @@ export const quizSearch = Yup.object({
 });
 
 export const UpdateProduct = Yup.object({
-  price: Yup.string().required("Please fill the Price"),
+  price: Yup.number()
+    .min(1, "Bonus must be entered       as a positive value")
+    .typeError("Bonus must be a number")
+    .required("Please fill out this field."),
 });
 
 export const addProductSchema = Yup.object({
-  productName: Yup.string().required("Please fill the Product Name"),
+  productName: Yup.string().required("Please fill out this field."),
+  bonus: Yup.number()
+    .required("Please fill out this field.")
+    .min(1, "Bonus must be enter as a positive value")
+    .typeError("Bonus must be a number"),
+  sku: Yup.string().required("Please fill out this field."),
+});
+export const addRetailerSchema = Yup.object({
+  productName: Yup.string().required("Please fill out this field."),
 });
 
-export const addProductSizeSchema = Yup.object({
-  productName: Yup.string().required("Please Select Product"),
-  upc: Yup.number().required("Please fill the upc"),
-  size: Yup.string().required("Please fill the size"),
-  spiff: Yup.number().min(0).required("Please fill the spiff"),
-});
 
 export const addNewsletterVal = Yup.object({
   subject: Yup.string().required("Please fill the Subject"),

@@ -122,11 +122,10 @@ export default function ManagerNewsletter() {
       }
     } catch (err) {
       setTotalPages("1");
-      if (err?.response?.status === 404) {
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
+      setTotalResults("1");
+
+      setResultData([]);
+      setLoading(false);
     }
   };
   useLayoutEffect(() => {

@@ -319,7 +319,7 @@ export default function HeaderSidebar() {
                     allYears.map((data) => (
                       <li>
                         <Link
-                          to={`https://beta.api.selectyourrebate.com/v1/export-report-claims/${data}?time=${time}`}
+                          to={`https://beta.api.selectyourrebate.com/v1/export-report-claims-kings/${data}?time=${time}`}
                         >
                           <i className="bi bi-circle"></i>
                           {data}

@@ -1338,7 +1338,7 @@ export default function AllClaims() {
                   <td>
                     <ul className="rob-rollmann">
                       <li>
-                        <b>Levin SKU/Description/Bonus::</b>{" "}
+                        <b>Levin SKU/Description/Bonus:</b>{" "}
                         {`${el.code}/${el.prodName}/$${el.price}`}
                       </li>
                     </ul>

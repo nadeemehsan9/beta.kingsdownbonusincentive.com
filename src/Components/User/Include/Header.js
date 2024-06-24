@@ -49,7 +49,7 @@ export default function Header() {
                   <div className="fax-con">
                     <div>
                       Fax-Number:
-                      <a href="fax:866-632-6450"> 866-632-6450.</a> Phone
+                      <a href="fax:866-632-6450"> 866-632-6450</a> Phone
                       Number:
                       <a href="tel:866-354-8321"> 866-354-8321</a>
                     </div>

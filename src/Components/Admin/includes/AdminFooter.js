@@ -5,8 +5,7 @@ export default function AdminFooter() {
     <footer className="text-center admin-footer">
       <div className="container">
         <span>
-          © Copyrights {new Date().getFullYear()} all rights reserved by Kings
-          Down Rewards.
+          © Copyrights {new Date().getFullYear()} all rights reserved by Kings Down Bonus Incentive.
         </span>
       </div>
     </footer>

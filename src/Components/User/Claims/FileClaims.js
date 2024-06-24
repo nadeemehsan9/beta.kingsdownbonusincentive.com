@@ -480,8 +480,8 @@ function FileClaims() {
                                   values={values.invoice}
                                   handleChange={handleChange}
                                   handleBlur={handleBlur}
-                                  placeholder="DELIVERED INVOICE No"
-                                  spanText="DELIVERED INVOICE NO"
+                                  placeholder="DELIVERED INVOICE No."
+                                  spanText="DELIVERED INVOICE NO."
                                   fieldName="invoice"
                                   fieldType="text"
                                   required={true}
@@ -686,8 +686,8 @@ function FileClaims() {
                                   values={values.invoice2}
                                   handleChange={handleChange}
                                   handleBlur={handleBlur}
-                                  placeholder="DELIVERED INVOICE NO"
-                                  spanText="DELIVERED INVOICE NO"
+                                  placeholder="DELIVERED INVOICE NO."
+                                  spanText="DELIVERED INVOICE NO."
                                   fieldName="invoice2"
                                   fieldType="text"
                                   required={true}
@@ -885,8 +885,8 @@ function FileClaims() {
                                   values={values.invoice3}
                                   handleChange={handleChange}
                                   handleBlur={handleBlur}
-                                  placeholder="DELIVERED INVOICE NO"
-                                  spanText="DELIVERED INVOICE NO"
+                                  placeholder="DELIVERED INVOICE NO."
+                                  spanText="DELIVERED INVOICE NO."
                                   fieldName="invoice3"
                                   fieldType="text"
                                   required={true}

@@ -6,7 +6,7 @@ export default function FootForgot() {
       <div className="container">
         <span>
           © Copyrights {new Date().getFullYear()} all rights reserved by Kings
-          Down Rewards
+          Down Bonus Incentive.
         </span>
       </div>
     </footer>

@@ -228,7 +228,7 @@ export default function Welcome() {
                   customercare@eliterewards.biz
                 </a>{" "}
                 or call <a href="tel:866-354-8321"> 866-354-8321</a>. Claims can
-                also be faxed to <a href="fax:866-632-6450.">866-632-6450.</a>.
+                also be faxed to <a href="fax:866-632-6450.">866-632-6450</a>.
               </p>
             </div>
           </div>

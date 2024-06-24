@@ -92,9 +92,9 @@ export const submitUserSchema = Yup.object({
 
   product: Yup.number().required("Please select product you sold"),
 
-  invoice: Yup.string().min(2).required("Please enter delivered invoice"),
-  invoice_date: Yup.string().required("Please select date"),
-  quantity: Yup.number().required("Please select shipped quantity"),
+  invoice: Yup.string().min(2).required("Please enter delivered invoice no."),
+  invoice_date: Yup.string().required("Please select Invoice date"),
+  quantity: Yup.number().required("Please select quantity shipped"),
   image: Yup.mixed().required("Please upload an file"),
 
   // FIXME all fields depend on product field, if product field is empty then what?
@@ -104,19 +104,19 @@ export const submitUserSchema = Yup.object({
     .min(2)
     .when("product2", {
       is: (product2) => product2,
-      then: Yup.string().required("Please enter delivered invoice"),
+      then: Yup.string().required("Please enter delivered invoice no."),
       otherwise: Yup.string().min(2),
     }),
   invoice_date2: Yup.string()
     .min(2)
     .when("product2", {
       is: (product2) => product2,
-      then: Yup.string().required("Please select date"),
+      then: Yup.string().required("Please select Invoice date"),
       otherwise: Yup.string().min(2),
     }),
   quantity2: Yup.number().when("product2", {
     is: (product2) => product2,
-    then: Yup.number().required("Please select shipped quantity"),
+    then: Yup.number().required("Please select quantity shipped"),
     otherwise: Yup.number(),
   }),
   image2: Yup.mixed().when("product2", {
@@ -132,19 +132,19 @@ export const submitUserSchema = Yup.object({
     .min(2)
     .when("product3", {
       is: (product3) => product3,
-      then: Yup.string().required("Please enter delivered invoice"),
+      then: Yup.string().required("Please enter delivered invoice no."),
       otherwise: Yup.string().min(2),
     }),
   invoice_date3: Yup.string()
     .min(2)
     .when("product3", {
       is: (product3) => product3,
-      then: Yup.string().required("Please select date"),
+      then: Yup.string().required("Please select Invoice date"),
       otherwise: Yup.string().min(2),
     }),
   quantity3: Yup.number().when("product3", {
     is: (product3) => product3,
-    then: Yup.number().required("Please select shipped quantity"),
+    then: Yup.number().required("Please select quantity shipped"),
     otherwise: Yup.number(),
   }),
   image3: Yup.mixed().when("product3", {
@@ -152,8 +152,6 @@ export const submitUserSchema = Yup.object({
     then: Yup.mixed().required("Please upload an image"),
     otherwise: Yup.mixed(),
   }),
-
-
 });
 
 const phoneRegExp = /^([0-9]{10})$/gm;

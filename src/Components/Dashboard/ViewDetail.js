@@ -19,7 +19,7 @@ export default function ViewDetail() {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [reason, setReason] = useState("");
-  const [name, setName] = useState("");
+
   const [number, setNumber] = useState("");
   const [size, setSize] = useState("");
   const [price, setPrice] = useState("");
@@ -72,10 +72,10 @@ export default function ViewDetail() {
           res[0].split_sale_status == "complete "
             ? res[0].ship_quantity * res[0].price
             : res[0].ship_quantity * (res[0].price / 2);
-        setName(res[0].name);
+
         setNumber(res[0].number);
-        setSize(res[0].code + "/" + res[0].size);
-        setPrice(res[0].price);
+        setSize(res[0].code + "/" + res[0].description);
+        setPrice(res[0].bonus);
         setShipQuantity(res[0].ship_quantity);
         setSplitSaleStatus(res[0].split_sale_status);
         setReward(rewardAmount);
@@ -299,31 +299,17 @@ export default function ViewDetail() {
                       )}
 
                       <div className="row">
-                        <div className="col-lg-4">
+                        <div className="col-lg-8">
                           <div className="form-floating">
                             <input
                               type="text"
                               className="form-control"
-                              placeholder="Product Name"
-                              name="name"
-                              value={name || ""}
-                              disabled
-                            />
-                            <label>Product Name</label>
-                          </div>
-                        </div>
-
-                        <div className="col-lg-4">
-                          <div className="form-floating">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="UPC/Size/Spiff"
+                              placeholder="Levin Sku/Description/Bonus:"
                               name="size"
                               value={`${size}/$${price}`}
                               disabled
                             />
-                            <label>UPC/Size/Spiff</label>
+                            <label>Levin Sku/Description/Bonus:</label>
                           </div>
                         </div>
 

@@ -490,13 +490,23 @@ export default function AcceptedClaims() {
       });
     } catch (error) {
       setLoading(false);
-      Swal.fire({
-        title: "Error",
-        text: "Error in updating claim status",
-        icon: "error",
-        confirmButtonText: "Ok",
-        confirmButtonColor: "#28a745",
-      });
+      if (error.response.status == 422) {
+        Swal.fire({
+          title: "Error",
+          text: error.response.data.response,
+          icon: "error",
+          confirmButtonText: "Ok",
+          confirmButtonColor: "#28a745",
+        });
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "Error in updating claim status",
+          icon: "error",
+          confirmButtonText: "Ok",
+          confirmButtonColor: "#28a745",
+        });
+      }
     }
   };
 

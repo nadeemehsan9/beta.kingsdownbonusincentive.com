@@ -1475,7 +1475,7 @@ export default function ArchivedClaim() {
                           <ul className="dropdown-menu">
                             <li>
                               <a
-                                href={`${process.env.REACT_APP_API_Link}export-yearly-claims/${year}?time=${time}`}
+                                href={`${process.env.REACT_APP_API_Link}export-yearly-claims-kings/${year}?time=${time}`}
                                 className="dropdown-item"
                                 style={{ cursor: "pointer" }}
                               >

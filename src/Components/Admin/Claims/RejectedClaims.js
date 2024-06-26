@@ -1239,7 +1239,7 @@ export default function RejectedClaims() {
                           <a
                             className="btn btn-primary back-orange export-rang w-100"
                             style={styles.range}
-                            href={`${API_URL}list-rejected-claims-kings/normal/rejected/${startDate}/${endDate}`}
+                            href={`${API_URL}export-range-claims-kings/normal/rejected/${startDate}/${endDate}`}
                           >
                             Export by range
                           </a>

@@ -112,7 +112,7 @@ export default function ForgotPass() {
                       </h4> */}
                       <hr className="underLine" />
                       <p style={{ color: "#fff" }}>
-                        Enter your email and to receive instructions
+                        Enter your email to receive instructions
                       </p>
                       <div className="col-12">
                         <label>RECOVERY EMAIL</label>

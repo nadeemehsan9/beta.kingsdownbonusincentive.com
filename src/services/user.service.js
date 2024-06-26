@@ -40,7 +40,7 @@ const AdminforgotPass = (values) => {
     "Content-Type": "application/json",
   };
   return axios.post(
-    API_URL + "forgot-password",
+    API_URL + "forgot-password-admin",
     {
       email: values.email,
     },

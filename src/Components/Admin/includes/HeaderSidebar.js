@@ -271,7 +271,7 @@ export default function HeaderSidebar() {
               }}
             >
               <div className="parent-icon">
-                <i className="fadeIn animated bx bx-layer"></i>
+                <i className="fadeIn animated bx bi-basket3-fill"></i>
               </div>
               <div className="menu-title">RETAILERS</div>
             </a>

@@ -319,7 +319,7 @@ export default function HeaderSidebar() {
                     allYears.map((data) => (
                       <li>
                         <Link
-                          to={`https://beta.claims-api.elitestacks.com/v1/export-report-claims-kings/${data}?time=${time}`}
+                          to={`https://claims-api.elitestacks.com/v1/export-report-claims-kings/${data}?time=${time}`}
                         >
                           <i className="bi bi-circle"></i>
                           {data}
@@ -343,7 +343,7 @@ export default function HeaderSidebar() {
                     allYears.map((data) => (
                       <li>
                         <Link
-                          to={`https://beta.claims-api.elitestacks.com/v1/export-1099-report/${data}?time=${time}`}
+                          to={`https://claims-api.elitestacks.com/v1/export-1099-report/${data}?time=${time}`}
                         >
                           <i className="bi bi-circle"></i>
                           {data}

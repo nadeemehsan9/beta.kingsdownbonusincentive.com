@@ -110,7 +110,7 @@ export default function AcceptedClaims() {
     singleSelections = selectedRecords;
     $(".export-selection").attr(
       "href",
-      `https://beta.claims-api.elitestacks.com/v1/export-selected-claims-kings/${selectedRecords}?time=${time}`
+      `https://claims-api.elitestacks.com/v1/export-selected-claims-kings/${selectedRecords}?time=${time}`
     );
     // FIXME length void click issue
     console.log(singleSelections.length);
@@ -128,7 +128,7 @@ export default function AcceptedClaims() {
     console.log(allSelections);
     $(".export-selection").attr(
       "href",
-      `https://beta.claims-api.elitestacks.com/v1/export-selected-claims-kings/${allSelections}?time=${time}`
+      `https://claims-api.elitestacks.com/v1/export-selected-claims-kings/${allSelections}?time=${time}`
     );
   };
 

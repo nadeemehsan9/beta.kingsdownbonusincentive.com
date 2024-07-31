@@ -111,7 +111,7 @@ export default function AllClaims() {
     singleSelections = selectedRecords;
     $(".export-selection").attr(
       "href",
-      `https://beta.claims-api.elitestacks.com/v1/export-selected-claims-kings/${selectedRecords}?time=${time}`
+      `https://claims-api.elitestacks.com/v1/export-selected-claims-kings/${selectedRecords}?time=${time}`
     );
     // FIXME length void click issue
   };
@@ -128,7 +128,7 @@ export default function AllClaims() {
 
     $(".export-selection").attr(
       "href",
-      `https://beta.claims-api.elitestacks.com/v1/export-selected-claims-kings/${allSelections}?time=${time}`
+      `https://claims-api.elitestacks.com/v1/export-selected-claims-kings/${allSelections}?time=${time}`
     );
   };
 

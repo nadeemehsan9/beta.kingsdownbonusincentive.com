@@ -203,7 +203,7 @@ export default function AddNewsletter() {
                           initData='<table align="center" border="0" cellpadding="10" cellspacing="0" style="width:800px">
                         <tbody>
                           <tr>
-                            <td colspan="2"><img alt="ashely-bg" src="https://beta.api.selectyourrebate.com/resources/images/header-kings.png" /></td>
+                            <td colspan="2"><img alt="ashely-bg" src="https://claims-api.elitestacks.com/resources/images/header-kings.png" /></td>
                           </tr>
                           <tr>
                             <td colspan="2" style="vertical-align:top">
@@ -246,7 +246,7 @@ export default function AddNewsletter() {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
                           </tr>
                           <tr>
-                            <td colspan="2"><img src="https://beta.api.selectyourrebate.com/resources/images/banner-kings.png" /></td>
+                            <td colspan="2"><img src="https://claims-api.elitestacks.com/resources/images/banner-kings.png" /></td>
                           </tr>
                           <tr>
                             <td colspan="2">Copyrights 2023</td>

@@ -58,7 +58,7 @@ export default function ViewRSAs() {
     singleSelections = selectedRecords;
     $(".export-selection").attr(
       "href",
-      `https://beta.claims-api.elitestacks.com/v1/export-selected-rsa/${selectedRecords}?time=${time}`
+      `https://claims-api.elitestacks.com/v1/export-selected-rsa/${selectedRecords}?time=${time}`
     );
     // FIXME length void click issue
     console.log(singleSelections.length);
@@ -76,7 +76,7 @@ export default function ViewRSAs() {
     console.log(allSelections);
     $(".export-selection").attr(
       "href",
-      `https://beta.claims-api.elitestacks.com/v1/export-selected-rsa/${allSelections}?time=${time}`
+      `https://claims-api.elitestacks.com/v1/export-selected-rsa/${allSelections}?time=${time}`
     );
   };
 

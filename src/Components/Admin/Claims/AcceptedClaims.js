@@ -161,7 +161,7 @@ export default function AcceptedClaims() {
       endDateRef.current.value = "";
       setIsRecords(true);
       setIsExport(true);
-      toast.error("Ending date must be grater than starting date!", {
+      toast.error("Ending date must be greater than starting date!", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: true,
@@ -203,7 +203,7 @@ export default function AcceptedClaims() {
       setIsInvRecords(true);
       setIsInvExport(true);
       endDateInvRef.current.value = "";
-      toast.error("Ending date must be grater than starting date!", {
+      toast.error("Ending date must be greater than starting date!", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: true,

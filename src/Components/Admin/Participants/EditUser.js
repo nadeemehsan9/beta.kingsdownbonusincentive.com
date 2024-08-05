@@ -14,6 +14,7 @@ import ToTop from "../includes/ToTop";
 import { useSelector } from "react-redux";
 import { Helmet } from "react-helmet";
 import UserService from "../../../services/user.service";
+import { editRsa } from "../../../schema";
 
 export default function EditRsa() {
   const TITLE = "Kings Down | Edit USER SSN";
@@ -79,6 +80,28 @@ export default function EditRsa() {
           });
         } else if (err?.response?.data?.email?.length) {
           toast.error(err?.response?.data?.email[0], {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else if (err?.response?.data?.phone?.length) {
+          toast.error(err?.response?.data?.phone[0], {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else if (err?.response?.data?.zip?.length) {
+          toast.error(err?.response?.data?.zip[0], {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: true,
@@ -228,7 +251,7 @@ export default function EditRsa() {
         created_at: created_at,
         updated_by: userId,
       },
-      // validationSchema: addStore,
+      validationSchema: editRsa,
       onSubmit: (values, action) => {
         updateRsa(values);
       },

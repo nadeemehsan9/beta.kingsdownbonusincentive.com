@@ -132,6 +132,40 @@ export const signUpSchema = Yup.object({
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
+export const editRsa = Yup.object({
+  first_name: Yup.string()
+    .min(2, "First Name must be at least 2 characters long.")
+    .required("Please enter the First Name"),
+  last_name: Yup.string()
+    .min(2, "Last Name must be at least 2 characters long.")
+    .required("Please enter the Last Name"),
+
+  ssn_number: Yup.string()
+    .min(11, "Please enter valid SSN")
+    .max(11, "Please enter complete SSN")
+    .required("Please enter the SSN"),
+
+  address1: Yup.string()
+    .min(2, "The Address 1 must be at least 2 characters long.")
+    .required("Please enter the Address1"),
+
+  zip: Yup.string()
+    .min(5, "The Zip Code must be at least 5 characters long.")
+    .max(9, "The Zip Code must not be greater than 9 characters.")
+    .required("Please enter the Zip Code"),
+  phone: Yup.string()
+    .required("Please enter the Phone")
+    .matches(phoneRegExp, "Please enter at least 10 digits"),
+
+  state: Yup.number().required("Please select the State"),
+
+  city: Yup.number().required("Please enter the City"),
+
+  email: Yup.string()
+    .email("Please enter a valid email")
+    .required("Please enter the Email"),
+});
+
 export const quizSearch = Yup.object({
   fieldtype: Yup.number().required("Please Select a Column"),
   searchval: Yup.string().required("Please fill the search field"),
@@ -155,7 +189,6 @@ export const addProductSchema = Yup.object({
 export const addRetailerSchema = Yup.object({
   productName: Yup.string().required("Please fill out this field."),
 });
-
 
 export const addNewsletterVal = Yup.object({
   subject: Yup.string().required("Please fill the Subject"),

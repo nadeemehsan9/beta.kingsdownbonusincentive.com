@@ -288,7 +288,6 @@ export default function EditRsa() {
                       : type == "deactivemanager"
                       ? "deactive manager"
                       : type}{" "}
-                    SSN
                   </h2>
                 </div>
                 <div className="slides-here">

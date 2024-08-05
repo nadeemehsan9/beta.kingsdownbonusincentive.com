@@ -159,7 +159,7 @@ export const editRsa = Yup.object({
 
   state: Yup.number().required("Please select the State"),
 
-  city: Yup.number().required("Please enter the City"),
+  city: Yup.number().required("Please select the City"),
 
   email: Yup.string()
     .email("Please enter a valid email")

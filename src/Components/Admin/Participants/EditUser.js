@@ -210,6 +210,8 @@ export default function EditRsa() {
 
   const changeUserCity = (e) => {
     setUserCity([]);
+    setFieldValue("city", "");
+
     const getUserCity = async () => {
       setUserCityLoader(true);
       const { data } = await UserService.getCityByStateId(e);
@@ -232,30 +234,37 @@ export default function EditRsa() {
 
   const [ssnerror, setSSNerror] = useState("");
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      enableReinitialize: true,
-      initialValues: {
-        ssn_number: ssn_number,
-        emp_number: emp_number,
-        first_name: first_name,
-        last_name: last_name,
-        username: username,
-        password: password,
-        email: email,
-        address1: address1,
-        state: state,
-        city: city,
-        zip: zip,
-        phone: phone,
-        created_at: created_at,
-        updated_by: userId,
-      },
-      validationSchema: editRsa,
-      onSubmit: (values, action) => {
-        updateRsa(values);
-      },
-    });
+  const {
+    values,
+    errors,
+    touched,
+    setFieldValue,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      ssn_number: ssn_number,
+      emp_number: emp_number,
+      first_name: first_name,
+      last_name: last_name,
+      username: username,
+      password: password,
+      email: email,
+      address1: address1,
+      state: state,
+      city: city,
+      zip: zip,
+      phone: phone,
+      created_at: created_at,
+      updated_by: userId,
+    },
+    validationSchema: editRsa,
+    onSubmit: (values, action) => {
+      updateRsa(values);
+    },
+  });
 
   return (
     <>

@@ -34,9 +34,9 @@ function Registration() {
   const navigate = useNavigate();
   //creating function to load ip address from the API
   const getIp = async () => {
-    const res = await axios.get("https://geolocation-db.com/json/");
+    const res = await axios.get("https://api.ipify.org?format=json");
 
-    const weIp = res.data.IPv4;
+    const weIp = res.data.ip;
     secureLocalStorage.setItem("ip", weIp);
   };
 

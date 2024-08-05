@@ -368,9 +368,18 @@ const updateRsaList = (id, values) => {
     "Content-Type": "application/json",
   };
   return axios.put(
-    `${API_URL}update-user-by-id/${id}`,
+    `${API_URL}update-user-by-id-kings/${id}`,
     {
       ssn: values.ssn_number,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      address1: values.address1,
+      state: values.state,
+      zip: values.zip,
+      city: values.city,
+      phone: values.phone,
+
       updated_by: values.updated_by,
       updated_ip: secureLocalStorage.getItem("ip"),
     },

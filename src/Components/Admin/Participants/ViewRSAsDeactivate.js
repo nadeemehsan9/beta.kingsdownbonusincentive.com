@@ -690,6 +690,9 @@ export default function ViewRSAsDeactivate() {
                       <li>
                         <b>Email:</b> {el.email}
                       </li>
+                      <li>
+                        <b>Phone:</b> {el.phone}
+                      </li>
                     </ul>
                   </td>
 

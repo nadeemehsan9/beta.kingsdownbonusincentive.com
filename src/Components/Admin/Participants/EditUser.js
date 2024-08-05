@@ -2,7 +2,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import moment from "moment";
 import React, { useLayoutEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { toast, ToastContainer } from "react-toastify";
 
@@ -31,43 +31,17 @@ export default function EditRsa() {
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
+  const [phone, setPhone] = useState("");
   const [created_at, setCreated_at] = useState("");
 
   const [loading, setLoading] = useState(false);
 
+  const [userState, setUserState] = useState([]);
+  const [userCity, setUserCity] = useState([]);
+  const [userCityLoader, setUserCityLoader] = useState(false);
+
   const [disable, setDisable] = useState(false);
 
-  const navigate = useNavigate();
-
-  const checkSSN = async (e) => {
-    // console.log(values.ssn_number.length);
-    if (values.ssn_number !== "" && values.ssn_number.length >= 11) {
-      values["id"] = userId;
-      // setDisable(true);
-      try {
-        const response = await UserService.validateSSNAdmin(values);
-
-        // if (response.status === 200) {
-        setDisable(false);
-        setSSNerror("");
-        // register(action);
-        // }
-      } catch (err) {
-        if (err?.response?.status === 409) {
-          setDisable(true);
-          setSSNerror(err.response.data.response);
-        } else {
-          // FIXME
-          console.log(err.message);
-          setDisable(false);
-        }
-      }
-    } else {
-      setDisable(false);
-
-      setSSNerror("");
-    }
-  };
   const updateRsa = async (values) => {
     setLoading(true);
 
@@ -89,18 +63,42 @@ export default function EditRsa() {
         });
       }
     } catch (err) {
+      console.log(err);
       setLoading(false);
       if (err?.response?.status === 422) {
-        toast.error("Unprocessable Content !", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        if (err?.response?.data?.ssn?.length) {
+          toast.error(err?.response?.data?.ssn[0], {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else if (err?.response?.data?.email?.length) {
+          toast.error(err?.response?.data?.email[0], {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else
+          toast.error("Unprocessable Content !", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
       } else if (err?.response?.status === 409) {
         toast.error(err.response.data.response, {
           position: "top-right",
@@ -150,11 +148,13 @@ export default function EditRsa() {
         setPassword(res.password);
         setEmail(res.email);
         setAddress1(res.address1);
-        setState(res.state !== "" ? res.state.toUpperCase() : "N/A");
-        setCity(res.city !== "" ? res.city.toUpperCase() : "N/A");
+        setState(res.state_id);
+        setCity(res.city_id);
         setZip(res.zip);
+        setPhone(res.phone);
         // {moment(res.created_at).format("MM-DD-YYYY")}
         setCreated_at(moment(res.created_at).format("MM-DD-YYYY"));
+        changeUserCity(res.state_id);
 
         // let resultData;
         // resultData = response.data.response;
@@ -169,9 +169,44 @@ export default function EditRsa() {
       }
     };
     getResultData();
+
+    const getUserState = async () => {
+      const { data } = await UserService.getUserState();
+      const { response: res } = data;
+      const results = [];
+      res.map((value) => {
+        results.push({
+          key: value.name,
+          value: value.id,
+        });
+      });
+      setUserState([{ key: "SELECT STATE", value: "" }, ...results]);
+    };
+    getUserState();
   }, []);
-  // const [disable, setDisable] = useState(false);
-  const [usererror, setUsererror] = useState("");
+
+  const changeUserCity = (e) => {
+    setUserCity([]);
+    const getUserCity = async () => {
+      setUserCityLoader(true);
+      const { data } = await UserService.getCityByStateId(e);
+      const { response: res } = data;
+      const results = [];
+      res.map((value) => {
+        results.push({
+          key: value.city,
+          value: value.id,
+        });
+      });
+      setUserCity([...results]);
+      setUserCityLoader(false);
+    };
+
+    if (e !== "") {
+      getUserCity();
+    }
+  };
+
   const [ssnerror, setSSNerror] = useState("");
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -189,6 +224,7 @@ export default function EditRsa() {
         state: state,
         city: city,
         zip: zip,
+        phone: phone,
         created_at: created_at,
         updated_by: userId,
       },
@@ -250,7 +286,6 @@ export default function EditRsa() {
                                     ? "is-danger"
                                     : ""
                                 }`}
-                                onKeyUp={checkSSN}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 name="ssn_number"
@@ -309,14 +344,13 @@ export default function EditRsa() {
                                 onBlur={handleBlur}
                                 name="first_name"
                                 value={values.first_name || ""}
-                                disabled
                               />
                               <label>First Name</label>
-                              {/* {errors.first_name && touched.first_name ? (
-                              <p className="help is-danger">
-                                {errors.first_name}
-                              </p>
-                            ) : null} */}
+                              {errors.first_name && touched.first_name ? (
+                                <p className="help is-danger">
+                                  {errors.first_name}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
 
@@ -335,14 +369,13 @@ export default function EditRsa() {
                                 onBlur={handleBlur}
                                 name="last_name"
                                 value={values.last_name || ""}
-                                disabled
                               />
                               <label>Last Name</label>
-                              {/* {errors.last_name && touched.last_name ? (
-                              <p className="help is-danger">
-                                {errors.last_name}
-                              </p>
-                            ) : null} */}
+                              {errors.last_name && touched.last_name ? (
+                                <p className="help is-danger">
+                                  {errors.last_name}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
 
@@ -412,82 +445,106 @@ export default function EditRsa() {
                                 onBlur={handleBlur}
                                 name="email"
                                 value={values.email || ""}
-                                disabled
                               />
                               <label>Email</label>
-                              {/* {errors.email && touched.email ? (
-                              <p className="help is-danger">{errors.email}</p>
-                            ) : null} */}
+                              {errors.email && touched.email ? (
+                                <p className="help is-danger">{errors.email}</p>
+                              ) : null}
                             </div>
                           </div>
-
                           <div className="col-lg-6">
-                            <label className="form-label">Address:</label>
+                            <label className="form-label">Phone:</label>
                             <div className="form-floating">
                               <input
                                 type="text"
-                                placeholder="Address"
+                                placeholder="Phone"
                                 className={`form-control ${
-                                  errors.address1 && touched.address1
+                                  errors.phone && touched.phone
                                     ? "is-danger"
                                     : ""
                                 }`}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                name="address1"
-                                value={values.address1 || ""}
-                                disabled
+                                name="phone"
+                                value={values.phone || ""}
                               />
-                              <label>Address</label>
-                              {/* {errors.address1 && touched.address1 ? (
-                              <p className="help is-danger">{errors.address1}</p>
-                            ) : null} */}
+                              <label>Phone</label>
+                              {errors.phone && touched.phone ? (
+                                <p className="help is-danger">{errors.phone}</p>
+                              ) : null}
                             </div>
                           </div>
 
                           <div className="col-lg-6">
-                            <label className="form-label">State:</label>
-                            <div className="form-floating">
-                              <input
-                                type="text"
-                                placeholder="State"
-                                className={`form-control ${
-                                  errors.state && touched.state
-                                    ? "is-danger"
-                                    : ""
-                                }`}
-                                onChange={handleChange}
+                            <div
+                              className={`form-floating ${
+                                errors.state && touched.state ? "is-danger" : ""
+                              }`}
+                            >
+                              <select
+                                className="form-select"
+                                onChange={(e) => {
+                                  handleChange(e);
+                                  changeUserCity(e.target.value);
+                                }}
                                 onBlur={handleBlur}
                                 name="state"
                                 value={values.state || ""}
-                                disabled
-                              />
+                                required
+                              >
+                                {/* <option value="">SELECT STATE</option> */}
+                                {userState.map((res) => {
+                                  return (
+                                    <option key={res.value} value={res.value}>
+                                      {res.key}
+                                    </option>
+                                  );
+                                })}
+                              </select>
                               <label>State</label>
-                              {/* {errors.state && touched.state ? (
-                              <p className="help is-danger">{errors.state}</p>
-                            ) : null} */}
+                              {errors.state && touched.state ? (
+                                <p className="help is-danger">{errors.state}</p>
+                              ) : null}
                             </div>
                           </div>
-
                           <div className="col-lg-6">
-                            <label className="form-label">City:</label>
-                            <div className="form-floating">
-                              <input
-                                type="text"
-                                placeholder="City"
-                                className={`form-control ${
+                            <div className="select-leading">
+                              {userCityLoader ? (
+                                <span
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                  aria-hidden="true"
+                                ></span>
+                              ) : null}
+                              <div
+                                className={`form-floating ${
                                   errors.city && touched.city ? "is-danger" : ""
                                 }`}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                name="city"
-                                value={values.city || ""}
-                                disabled
-                              />
-                              <label>City</label>
-                              {/* {errors.city && touched.city ? (
-                              <p className="help is-danger">{errors.city}</p>
-                            ) : null} */}
+                              >
+                                <select
+                                  className="form-select"
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  name="city"
+                                  value={values.city || ""}
+                                  required
+                                >
+                                  <option value="">SELECT CITY</option>
+                                  {userCity.map((res) => {
+                                    return (
+                                      <option key={res.value} value={res.value}>
+                                        {res.key}
+                                      </option>
+                                    );
+                                  })}
+                                </select>
+                                <label>City</label>
+                                {errors.city && touched.city ? (
+                                  <p className="help is-danger">
+                                    {errors.city}
+                                  </p>
+                                ) : null}
+                              </div>
                             </div>
                           </div>
 
@@ -504,15 +561,37 @@ export default function EditRsa() {
                                 onBlur={handleBlur}
                                 name="zip"
                                 value={values.zip || ""}
-                                disabled
                               />
                               <label>Zip</label>
-                              {/* {errors.zip && touched.zip ? (
-                              <p className="help is-danger">{errors.zip}</p>
-                            ) : null} */}
+                              {errors.zip && touched.zip ? (
+                                <p className="help is-danger">{errors.zip}</p>
+                              ) : null}
                             </div>
                           </div>
-
+                          <div className="col-lg-6">
+                            <label className="form-label">Address:</label>
+                            <div className="form-floating">
+                              <input
+                                type="text"
+                                placeholder="Address"
+                                className={`form-control ${
+                                  errors.address1 && touched.address1
+                                    ? "is-danger"
+                                    : ""
+                                }`}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                name="address1"
+                                value={values.address1 || ""}
+                              />
+                              <label>Address</label>
+                              {errors.address1 && touched.address1 ? (
+                                <p className="help is-danger">
+                                  {errors.address1}
+                                </p>
+                              ) : null}
+                            </div>
+                          </div>
                           <div className="col-lg-6">
                             <label className="form-label">Added On:</label>
                             <div className="form-floating">
@@ -556,9 +635,9 @@ export default function EditRsa() {
           </main>
 
           <ToTop />
-          {/* <div className={`loader ${loading ? "in" : ""}`}>
-          <div className="spinner-border main-spin"></div>
-        </div> */}
+          <div className={`loader ${loading ? "in" : ""}`}>
+            <div className="spinner-border main-spin"></div>
+          </div>
         </div>
         <AdminFooter />
       </div>

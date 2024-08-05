@@ -50,19 +50,20 @@ export default function EditRsa() {
       values["updated_by"] = userId;
       const response = await AdminListService.updateRsaList(id, values);
 
-      if (response.status === 200) {
-        setLoading(false);
-        toast.success("Record Updated !", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      }
+      setLoading(false);
+      toast.success("Record Updated !", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setTimeout(() => {
+        getResultData();
+      }, 1000);
     } catch (err) {
       console.log(err);
       setLoading(false);
@@ -78,6 +79,20 @@ export default function EditRsa() {
             progress: undefined,
             theme: "colored",
           });
+        } else if (err?.response?.data?.udf?.length) {
+          toast.error(
+            `The UDF No ${err?.response?.data?.udf[0]} already exists`,
+            {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            }
+          );
         } else if (err?.response?.data?.email?.length) {
           toast.error(err?.response?.data?.email[0], {
             position: "top-right",
@@ -148,49 +163,50 @@ export default function EditRsa() {
     }
   };
 
-  useLayoutEffect(() => {
-    const getResultData = async () => {
-      setLoading(true);
-      try {
-        const response = await AdminListService.getUserById(id);
-        const { data } = response;
-        const { response: res } = data;
-        // console.log(res.address2);
-        if (res.ssn_duplicate == "yes") {
-          setSSNerror("SSN already exists");
-          setDisable(true);
-        }
-
-        setSsn_Number(res.ssn);
-        setEmp_number(
-          res.emp_number !== "" ? res.emp_number.toUpperCase() : "N/A"
-        );
-        setFirst_Name(res.first_name);
-        setLast_Name(res.last_name);
-        setUsername(res.username);
-        setPassword(res.password);
-        setEmail(res.email);
-        setAddress1(res.address1);
-        setState(res.state_id);
-        setCity(res.city_id);
-        setZip(res.zip);
-        setPhone(res.phone);
-        // {moment(res.created_at).format("MM-DD-YYYY")}
-        setCreated_at(moment(res.created_at).format("MM-DD-YYYY"));
-        changeUserCity(res.state_id);
-
-        // let resultData;
-        // resultData = response.data.response;
-        setLoading(false);
-      } catch (err) {
-        // setTotalPages("1");
-        if (err?.response?.status === 404) {
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
+  const getResultData = async () => {
+    setLoading(true);
+    try {
+      const response = await AdminListService.getUserById(id);
+      const { data } = response;
+      const { response: res } = data;
+      // console.log(res.address2);
+      if (res.ssn_duplicate == "yes") {
+        setSSNerror("SSN already exists");
+        setDisable(true);
       }
-    };
+
+      setSsn_Number(res.ssn);
+
+      setEmp_number(
+        res.emp_number !== "" ? res.emp_number.toUpperCase() : "N/A"
+      );
+      setFirst_Name(res.first_name);
+      setLast_Name(res.last_name);
+      setUsername(res.username);
+      setPassword(res.password);
+      setEmail(res.email);
+      setAddress1(res.address1);
+      setState(res.state_id);
+      setCity(res.city_id);
+      setZip(res.zip);
+      setPhone(res.phone);
+      // {moment(res.created_at).format("MM-DD-YYYY")}
+      setCreated_at(moment(res.created_at).format("MM-DD-YYYY"));
+      changeUserCity(res.state_id);
+
+      // let resultData;
+      // resultData = response.data.response;
+      setLoading(false);
+    } catch (err) {
+      // setTotalPages("1");
+      if (err?.response?.status === 404) {
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
+    }
+  };
+  useLayoutEffect(() => {
     getResultData();
 
     const getUserState = async () => {
@@ -292,8 +308,10 @@ export default function EditRsa() {
                 </div>
                 <div className="slides-here">
                   <div className="alert alert-info">
-                    <strong>Info!</strong> Once SSN has been updated UDF number
-                    will be auto generated
+                    <strong>Info!</strong> The UDF No contains the last four
+                    digits of the SSN, and the first character of both the first
+                    and last name. Once SSN has been updated UDF number will be
+                    auto generated
                   </div>
                   <div className="row">
                     <Link to={`/admin/view-${type}`} className="btn-back">

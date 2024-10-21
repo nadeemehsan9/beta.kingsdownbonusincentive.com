@@ -16,8 +16,11 @@ import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import NewsLetterModal from "./NewsLetterModal";
+import { useSelector } from "react-redux";
 
 export default function ManagerNewsletter() {
+  const state = useSelector((state) => state.stateVals);
+  const { id: adminId } = state;
   const TITLE = "Kings Down | Manage Newsletter";
   const [loading, setLoading] = useState(false);
   const [limit, setLimit] = useState("");
@@ -75,7 +78,7 @@ export default function ManagerNewsletter() {
         setLoading(true);
 
         try {
-          await AdminListService.deleteNewsletter(delId);
+          await AdminListService.deleteNewsletter(delId, adminId);
           setLoading(false);
 
           toast.success("Deleted Successfully!", {

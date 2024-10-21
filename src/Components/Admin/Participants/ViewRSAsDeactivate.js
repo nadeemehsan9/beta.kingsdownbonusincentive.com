@@ -129,7 +129,10 @@ export default function ViewRSAsDeactivate() {
     if (counter > 0) {
       setLoading(true);
       try {
-        await AdminListService.deleteSelectedParticipants(singleSelections);
+        await AdminListService.deleteSelectedParticipants(
+          singleSelections,
+          adminId
+        );
         setLoading(false);
         toast.success("Record(s) has been deleted!", {
           position: "top-right",
@@ -426,7 +429,10 @@ export default function ViewRSAsDeactivate() {
         setLoading(true);
 
         try {
-          const response = await AdminListService.deleteParticipantsData(delId);
+          const response = await AdminListService.deleteParticipantsData(
+            delId,
+            adminId
+          );
           if (response.status === 200) {
             setLoading(false);
             toast.success("Deleted Successfully!", {

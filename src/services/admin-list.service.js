@@ -583,14 +583,14 @@ const getSearchDeactivatedRsaByDate = (col, val, limit, pageNo) => {
   );
 };
 
-const deleteParticipantsData = (recordId) => {
+const deleteParticipantsData = (recordId, adminId) => {
   const headers = {
     "Content-Type": "application/json",
   };
   return axios.delete(API_URL + "delete/" + recordId, {
     headers: headers,
     data: {
-      deleted_by: 1,
+      deleted_by: adminId,
       deleted_ip: secureLocalStorage.getItem("ip"),
     },
   });
@@ -613,39 +613,39 @@ const activeParticipantsData = (admin, recordId) => {
   });
 };
 
-const deleteSelectedParticipants = (recordId) => {
+const deleteSelectedParticipants = (recordId, adminId) => {
   const headers = {
     "Content-Type": "application/json",
   };
   return axios.delete(API_URL + "delete-selected", {
     headers: headers,
     data: {
-      deleted_by: 1,
+      deleted_by: adminId,
       user_id: recordId,
     },
   });
 };
 
-const deleteProduct = (recordId) => {
+const deleteProduct = (recordId, adminId) => {
   const headers = {
     "Content-Type": "application/json",
   };
   return axios.delete(`${API_URL}delete-product-kings/${recordId}`, {
     headers: headers,
     data: {
-      deleted_by: 1,
+      deleted_by: adminId,
       deleted_ip: secureLocalStorage.getItem("ip"),
     },
   });
 };
-const deleteRetailer = (recordId) => {
+const deleteRetailer = (recordId, adminId) => {
   const headers = {
     "Content-Type": "application/json",
   };
   return axios.delete(`${API_URL}delete-retailer/${recordId}`, {
     headers: headers,
     data: {
-      deleted_by: 1,
+      deleted_by: adminId,
       deleted_ip: secureLocalStorage.getItem("ip"),
     },
   });
@@ -737,14 +737,14 @@ const addNewsletter = (values) => {
     }
   );
 };
-const deleteNewsletter = (recordId) => {
+const deleteNewsletter = (recordId, adminId) => {
   const headers = {
     "Content-Type": "application/json",
   };
   return axios.delete(`${API_URL}delete-newsletter/${recordId}`, {
     headers: headers,
     data: {
-      deleted_by: 1,
+      deleted_by: adminId,
       deleted_ip: secureLocalStorage.getItem("ip"),
     },
   });

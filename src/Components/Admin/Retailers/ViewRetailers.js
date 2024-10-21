@@ -16,8 +16,11 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import { ToastContainer, toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 export default function ViewRetailers() {
+  const state = useSelector((state) => state.stateVals);
+  const { id: adminId } = state;
   const TITLE = "Kings Down | View All Product";
   const [loading, setLoading] = useState(false);
   const [limit, setLimit] = useState("10");
@@ -210,7 +213,7 @@ export default function ViewRetailers() {
         setLoading(true);
 
         try {
-          await AdminListService.deleteRetailer(delId);
+          await AdminListService.deleteRetailer(delId, adminId);
           setLoading(false);
           toast.success("Deleted Successfully!", {
             position: "top-right",

@@ -46,13 +46,21 @@ const getStoreInfoById = (id) => {
     headers: headers,
   });
 };
-
+const getUserState = () => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(API_URL + "list-all-states", {
+    headers: headers,
+  });
+};
 const StoreService = {
   getRetailers,
   getCityByStateId,
   getStoreByCityId,
   getStoreInfoById,
   getRetailerInfoById,
+  getUserState,
 };
 
 export default StoreService;

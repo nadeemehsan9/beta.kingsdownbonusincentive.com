@@ -55,7 +55,12 @@ import NotFound from "./Components/NotFound";
 import AddRetailers from "./Components/Admin/Retailers/AddRetailers";
 import ViewRetailers from "./Components/Admin/Retailers/ViewRetailers";
 import EditRetailers from "./Components/Admin/Retailers/EditRetailers";
-
+import AddUserStates from "./Components/Admin/UserStates/AddUserStates";
+import ViewAllUserStates from "./Components/Admin/UserStates/ViewAllUserStates";
+import AddUserCities from "./Components/Admin/UserCities/AddUserCities";
+import ViewAllUserCities from "./Components/Admin/UserCities/ViewAllUserCities";
+import EditUserCity from "./Components/Admin/UserCities/EditUserCity";
+import EditUserState from "./Components/Admin/UserStates/EditUserState";
 function App() {
   const dispatch = useDispatch();
   const userActions = bindActionCreators(actionCreaters, dispatch);
@@ -227,7 +232,13 @@ function App() {
 
       <Route path="/admin/view-retailers" element={<ViewRetailers />} />
       <Route path="/admin/edit-retailers/:id" element={<EditRetailers />} />
+      <Route path="/admin/add-user-state" element={<AddUserStates />} />
+      <Route path="/admin/view-user-states" element={<ViewAllUserStates />} />
+      <Route path="/admin/add-user-city" element={<AddUserCities />} />
+      <Route path="/admin/view-user-cities" element={<ViewAllUserCities />} />
 
+      <Route path="/admin/edit-user-state/:id" element={<EditUserState />} />
+      <Route path="/admin/edit-user-city/:id" element={<EditUserCity />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

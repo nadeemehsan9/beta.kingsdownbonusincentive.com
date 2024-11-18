@@ -193,3 +193,13 @@ export const addRetailerSchema = Yup.object({
 export const addNewsletterVal = Yup.object({
   subject: Yup.string().required("Please fill the Subject"),
 });
+export const addStateUser = Yup.object({
+  stateName: Yup.string().required("Please fill the State Name"),
+  code: Yup.string().required("Please fill the State code"),
+});
+
+export const addCity = Yup.object({
+  cityName: Yup.string().required("Please fill the City Name"),
+  zipCode: Yup.string().min(5).required("Please enter the Zip Code"),
+  stateName: Yup.number().required("Please Select a State Name"),
+});

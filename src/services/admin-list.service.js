@@ -750,9 +750,232 @@ const deleteNewsletter = (recordId, adminId) => {
   });
 };
 
+const addUserState = (values) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.post(
+    API_URL + "add-state",
+    {
+      name: values.stateName,
+      code: values.code,
+      created_by: values.id,
+      created_ip: secureLocalStorage.getItem("ip"),
+    },
+    {
+      headers: headers,
+    }
+  );
+};
+const getNewLimitUserStateList = (limit) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(API_URL + "list-state" + "?limit=" + limit, {
+    headers: headers,
+  });
+};
+
+const getSearchUserStateList = (col, val, limit) => {
+  if (col === "1") {
+    col = "id";
+  } else if (col === "2") {
+    col = "title";
+  } else if (col === "3") {
+    col = "code";
+  }
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(
+    API_URL + "list-state" + "?" + col + "=" + val + "&limit=" + limit,
+    {
+      headers: headers,
+    }
+  );
+};
+
+const getPaginationUserStateList = (pageNo, limit) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(
+    API_URL + "list-state" + "?page=" + pageNo + "&limit=" + limit,
+    {
+      headers: headers,
+    }
+  );
+};
+const getUserStateList = () => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(API_URL + "list-state", {
+    headers: headers,
+  });
+};
+const getStateNameByIdUser = (id) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(API_URL + "get-name-by-id/" + id, {
+    headers: headers,
+  });
+};
+
+const updateStateNameByIdUser = (id, values) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.put(
+    API_URL + "update-state/" + id,
+    {
+      name: values.stateName,
+      code: values.code,
+      updated_by: 1,
+      updated_ip: secureLocalStorage.getItem("ip"),
+    },
+    {
+      headers: headers,
+    }
+  );
+};
+
+const deleteUserState = (recordId, adminId) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.delete(API_URL + "delete-state/" + recordId, {
+    headers: headers,
+    data: {
+      deleted_by: adminId,
+      deleted_ip: secureLocalStorage.getItem("ip"),
+    },
+  });
+};
+
+const addUserCity = (values) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.post(
+    API_URL + "add-city",
+    {
+      city: values.cityName,
+      zip: values.zipCode,
+      state_id: values.stateName,
+      created_by: 1,
+      created_ip: secureLocalStorage.getItem("ip"),
+    },
+    {
+      headers: headers,
+    }
+  );
+};
+
+const getNewLimitCityListUser = (limit) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(API_URL + "list-city" + "?limit=" + limit, {
+    headers: headers,
+  });
+};
+
+const getSearchCityListUser = (col, val, limit) => {
+  if (col === "1") {
+    col = "title";
+  } else if (col === "2") {
+    col = "zip";
+  }
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(
+    API_URL + "list-city" + "?" + col + "=" + val + "&limit=" + limit,
+    {
+      headers: headers,
+    }
+  );
+};
+const getPaginationCityListUser = (pageNo, limit) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(
+    API_URL + "list-city" + "?page=" + pageNo + "&limit=" + limit,
+    {
+      headers: headers,
+    }
+  );
+};
+
+const getCityListUser = () => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(API_URL + "list-city", {
+    headers: headers,
+  });
+};
+
+const deleteUserCity = (recordId, adminId) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.delete(API_URL + "delete-city/" + recordId, {
+    headers: headers,
+    data: {
+      deleted_by: adminId,
+      deleted_ip: secureLocalStorage.getItem("ip"),
+    },
+  });
+};
+
+const getCityInfoByIdUser = (id) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.get(API_URL + "get-info-by-id/" + id, {
+    headers: headers,
+  });
+};
+const updateCityListUser = (id, values) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return axios.put(
+    API_URL + "update-city/" + id,
+    {
+      city: values.cityName,
+      zip: values.zipCode,
+      state_id: values.stateName,
+      updated_by: 1,
+      updated_ip: secureLocalStorage.getItem("ip"),
+    },
+    {
+      headers: headers,
+    }
+  );
+};
 const AdminListService = {
   login,
-
+  addUserState,
+  getNewLimitUserStateList,
+  getSearchUserStateList,
+  getPaginationUserStateList,
+  getUserStateList,
+  getStateNameByIdUser,
+  deleteUserState,
+  updateStateNameByIdUser,
+  addUserCity,
+  updateCityListUser,
+  getNewLimitCityListUser,
+  getSearchCityListUser,
+  getPaginationCityListUser,
+  deleteUserCity,
+  getCityListUser,
+  getCityInfoByIdUser,
   forgotPass,
 
   getSearchRsaStoreList,

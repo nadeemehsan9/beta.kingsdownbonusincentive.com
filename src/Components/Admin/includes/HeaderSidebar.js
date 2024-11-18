@@ -299,6 +299,60 @@ export default function HeaderSidebar() {
               }}
             >
               <div className="parent-icon">
+                <i className="lni lni-world-alt"></i>
+              </div>
+              <div className="menu-title">User States</div>
+            </a>
+            <ul>
+              <li>
+                <Link to="/admin/add-user-state">
+                  <i className="bi bi-circle"></i>Add State
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/view-user-states">
+                  <i className="bi bi-circle"></i>View All States
+                </Link>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a
+              href="/"
+              className="has-arrow"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <div className="parent-icon">
+                <i className="fadeIn animated bx bx-building"></i>
+              </div>
+              <div className="menu-title">User Cities</div>
+            </a>
+            <ul>
+              <li>
+                <Link to="/admin/add-user-city">
+                  <i className="bi bi-circle"></i>Add City
+                </Link>
+              </li>
+              <li>
+                <Link to="/admin/view-user-cities">
+                  <i className="bi bi-circle"></i>View All Cities
+                </Link>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a
+              href="/"
+              className="has-arrow"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <div className="parent-icon">
                 <i className="lni lni-library "></i>
               </div>
               <div className="menu-title">REPORTS</div>

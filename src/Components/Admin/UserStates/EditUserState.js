@@ -11,6 +11,7 @@ import CheckUtype from "../includes/CheckUtype";
 
 import HeaderSidebar from "../includes/HeaderSidebar";
 import ToTop from "../includes/ToTop";
+import { useSelector } from "react-redux";
 
 export default function EditUserState() {
   const [loading, setLoading] = useState(false);
@@ -18,7 +19,8 @@ export default function EditUserState() {
   const [stateCode, setStateCode] = useState("");
 
   const { id } = useParams();
-
+  const state = useSelector((state) => state.stateVals);
+  const { id: userId } = state;
   const getIp = async () => {
     const res = await axios.get("https://geolocation-db.com/json/");
 
@@ -49,6 +51,7 @@ export default function EditUserState() {
   const updateStateName = async (values) => {
     setLoading(true);
     try {
+      values["updated_by"] = userId;
       const { status, data } = await AdminListService.updateStateNameByIdUser(
         id,
         values

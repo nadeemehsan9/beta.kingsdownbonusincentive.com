@@ -12,6 +12,7 @@ import CheckUtype from "../includes/CheckUtype";
 
 import HeaderSidebar from "../includes/HeaderSidebar";
 import ToTop from "../includes/ToTop";
+import { useSelector } from "react-redux";
 
 export default function EditUserCity() {
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,8 @@ export default function EditUserCity() {
   const [zip, setZip] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const { id } = useParams();
-
+  const state = useSelector((state) => state.stateVals);
+  const { id: userId } = state;
   useLayoutEffect(() => {
     const getStateData = async () => {
       setLoading(true);
@@ -95,6 +97,7 @@ export default function EditUserCity() {
     setLoading(true);
 
     try {
+      values["updated_by"] = userId;
       const response = await AdminListService.updateCityListUser(id, values);
 
       if (response.status === 200) {

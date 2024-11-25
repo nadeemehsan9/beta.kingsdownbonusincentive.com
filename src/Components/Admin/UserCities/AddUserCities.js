@@ -14,9 +14,13 @@ import HeaderSidebar from "../includes/HeaderSidebar";
 import ToTop from "../includes/ToTop";
 import CheckUtype from "../includes/CheckUtype";
 import { Helmet } from "react-helmet";
+import { useSelector } from "react-redux";
 
 export default function AddUserCities() {
   const TITLE = "Casper Cash | Cities";
+  const state = useSelector((state) => state.stateVals);
+  const { id } = state;
+
   const [loading, setLoading] = useState(true);
   setTimeout(() => {
     setLoading(false);
@@ -53,7 +57,8 @@ export default function AddUserCities() {
     setLoading(true);
 
     try {
-      const response = await AdminListService.addUserCity(values);
+      let updatedValues = { ...values, id };
+      const response = await AdminListService.addUserCity(updatedValues);
 
       if (response.status === 201) {
         setLoading(false);

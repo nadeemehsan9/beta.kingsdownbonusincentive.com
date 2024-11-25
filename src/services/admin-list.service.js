@@ -832,7 +832,7 @@ const updateStateNameByIdUser = (id, values) => {
     {
       name: values.stateName,
       code: values.code,
-      updated_by: 1,
+      updated_by: values.updated_by,
       updated_ip: secureLocalStorage.getItem("ip"),
     },
     {
@@ -864,7 +864,7 @@ const addUserCity = (values) => {
       city: values.cityName,
       zip: values.zipCode,
       state_id: values.stateName,
-      created_by: 1,
+      created_by: values.id,
       created_ip: secureLocalStorage.getItem("ip"),
     },
     {
@@ -950,7 +950,7 @@ const updateCityListUser = (id, values) => {
       city: values.cityName,
       zip: values.zipCode,
       state_id: values.stateName,
-      updated_by: 1,
+      updated_by: values.updated_by,
       updated_ip: secureLocalStorage.getItem("ip"),
     },
     {

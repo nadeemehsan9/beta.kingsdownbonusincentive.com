@@ -200,6 +200,6 @@ export const addStateUser = Yup.object({
 
 export const addCity = Yup.object({
   cityName: Yup.string().required("Please fill the City Name"),
-  zipCode: Yup.string().min(5).required("Please enter the Zip Code"),
+  // zipCode: Yup.string().min(5).required("Please enter the Zip Code"),
   stateName: Yup.number().required("Please Select a State Name"),
 });

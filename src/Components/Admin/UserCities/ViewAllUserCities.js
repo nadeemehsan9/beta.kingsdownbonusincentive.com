@@ -281,6 +281,13 @@ export default function ViewAllUserCities() {
               </th>
               <th
                 scope="col"
+                onClick={() => requestSort("code")}
+                className={getClassNamesFor("code")}
+              >
+                State Code
+              </th>
+              <th
+                scope="col"
                 onClick={() => requestSort("Action")}
                 className={getClassNamesFor("Action")}
               >
@@ -299,6 +306,7 @@ export default function ViewAllUserCities() {
                   </td>
                   <td>{el.city}</td>
                   <td>{el.zip}</td>
+                  <td>{el.state_code}</td>
                   <td className="add-edit-delete-inline text-start">
                     <Link
                       to={"/admin/edit-user-city/" + el.id}

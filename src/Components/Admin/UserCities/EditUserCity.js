@@ -197,56 +197,7 @@ export default function EditUserCity() {
                   <div className="manage-territories-box">
                     <form onSubmit={handleSubmit} noValidate>
                       <div className="row">
-                        <div className="col-lg-6">
-                          <label className="form-label">City Name:</label>
-                          <div className="form-floating">
-                            <input
-                              type="text"
-                              placeholder="City Name"
-                              className={`form-control ${
-                                errors.cityName && touched.cityName
-                                  ? "is-danger"
-                                  : ""
-                              }`}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              name="cityName"
-                              value={values.cityName || ""}
-                              required
-                            />
-                            <label>City Name</label>
-                            {errors.cityName && touched.cityName ? (
-                              <p className="help is-danger">
-                                {errors.cityName}
-                              </p>
-                            ) : null}
-                          </div>
-                        </div>
-                        <div className="col-lg-6 mt-3 mt-lg-0">
-                          <label className="form-label">Zip Code:</label>
-                          <div className="form-floating">
-                            <input
-                              type="text"
-                              placeholder="Zip Code"
-                              className={`form-control ${
-                                errors.zipCode && touched.zipCode
-                                  ? "is-danger"
-                                  : ""
-                              }`}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              name="zipCode"
-                              value={values.zipCode || ""}
-                              required
-                            />
-                            <label>Zip Code</label>
-                            {errors.zipCode && touched.zipCode ? (
-                              <p className="help is-danger">{errors.zipCode}</p>
-                            ) : null}
-                          </div>
-                        </div>
-
-                        <div className="col-lg-6 mt-3">
+                        <div className="col-lg-6 mt-1">
                           <div className="form-group custom-group">
                             <label className="form-label">Select State:</label>
                             <select
@@ -277,12 +228,61 @@ export default function EditUserCity() {
                           </div>
                         </div>
 
-                        <div className="col-lg-2 mt-lg-3">
+                        <div className="col-lg-6">
+                          <label className="form-label">City Name:</label>
+                          <div className="form-floating">
+                            <input
+                              type="text"
+                              placeholder="City Name"
+                              className={`form-control ${
+                                errors.cityName && touched.cityName
+                                  ? "is-danger"
+                                  : ""
+                              }`}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              name="cityName"
+                              value={values.cityName || ""}
+                              required
+                            />
+                            <label>City Name</label>
+                            {errors.cityName && touched.cityName ? (
+                              <p className="help is-danger">
+                                {errors.cityName}
+                              </p>
+                            ) : null}
+                          </div>
+                        </div>
+                        <div className="col-lg-6 mt-lg-0">
+                          <label className="form-label">Zip Code:</label>
+                          <div className="form-floating">
+                            <input
+                              type="text"
+                              placeholder="Zip Code"
+                              className={`form-control ${
+                                errors.zipCode && touched.zipCode
+                                  ? "is-danger"
+                                  : ""
+                              }`}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              name="zipCode"
+                              value={values.zipCode || ""}
+                              required
+                            />
+                            <label>Zip Code</label>
+                            {errors.zipCode && touched.zipCode ? (
+                              <p className="help is-danger">{errors.zipCode}</p>
+                            ) : null}
+                          </div>
+                        </div>
+
+                        <div className="col-lg-2 mt-lg-2">
                           <button
                             className="btn btn-primary d-block px-4 my-0 mt-lg-4 width-100 back-blue"
                             type="submit"
                           >
-                            Update
+                            Submit
                           </button>
                         </div>
                       </div>

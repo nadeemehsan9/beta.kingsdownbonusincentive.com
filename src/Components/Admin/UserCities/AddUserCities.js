@@ -17,7 +17,7 @@ import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 
 export default function AddUserCities() {
-  const TITLE = "Casper Cash | Cities";
+  const TITLE = "Kings Down | Cities";
   const state = useSelector((state) => state.stateVals);
   const { id } = state;
 

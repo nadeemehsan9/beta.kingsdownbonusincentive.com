@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 
 export default function ViewAllUserCities() {
-  const TITLE = "Casper Cash | View Cities";
+  const TITLE = "Kings Down | View Cities";
   const state = useSelector((state) => state.stateVals);
   const { id: adminId } = state;
   const [loading, setLoading] = useState(false);

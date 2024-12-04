@@ -18,7 +18,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 
 export default function ViewAllUserStates() {
-  const TITLE = "Casper Cash | View States";
+  const TITLE = "Kings Down | View States";
   const state = useSelector((state) => state.stateVals);
   const { id: adminId } = state;
   const [loading, setLoading] = useState(false);

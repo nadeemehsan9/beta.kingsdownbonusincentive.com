@@ -13,7 +13,7 @@ import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 
 export default function AddUserStates() {
-  const TITLE = "Casper Cash | States";
+  const TITLE = "Kings Down | States";
   const state = useSelector((state) => state.stateVals);
   const { id: adminId } = state;
   const [loading, setLoading] = useState(true);
